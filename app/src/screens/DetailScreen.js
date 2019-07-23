@@ -75,7 +75,6 @@ export default class DetailScreen extends Component {
       fetch('http://staging.php-dev.in:8844/trainingapp/api/addToCart',{
         method:'POST',
         headers:{
-          //Accept:'application/x-www-form-urlencoded',
           access_token:'5d31b3f1ef96b',
           'Content-Type': 'application/x-www-form-urlencoded',
         },

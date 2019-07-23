@@ -35,13 +35,13 @@ export default class TableScreen extends Component {
     renderItems(){
       return(
         this.state.items.map((item)=>
-        <ScrollView>
+        // <ScrollView>
           <TouchableOpacity onPress={()=>{
-            this.props.navigation.navigate('Detail',{productId:item.id})
+            this.props.navigation.navigate('Detail',{productId:item.id,productName:item.name})
             }}>  
            <ItemDetail itemImage={item.product_images} itemName={item.name} itemProducer={item.producer} itemCost={item.cost} itemRating={item.rating} />
            </TouchableOpacity>
-        </ScrollView>
+        // </ScrollView>
         )
       )
     }

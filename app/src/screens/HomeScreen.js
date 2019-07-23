@@ -36,8 +36,9 @@ export default class HomeScreen extends Component {
              renderItem={({item})=>
              <View>
               <TouchableOpacity onPress={()=>{
-                // alert(item.key)
-                this.props.navigation.navigate('Table')}}>
+                
+               this.props.navigation.navigate('Table')}}>
+                  {/* this.props.navigation.toggleDrawer()}}> */}
                  <Image source={item.key} style={{margin:6}}></Image>
               </TouchableOpacity>
              </View>}

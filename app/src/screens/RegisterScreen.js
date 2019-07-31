@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, Image} from 'react-native';
+import { View, Text, Image,TouchableOpacity} from 'react-native';
 import R from '../R';
 import CustomTextInput from '../components/CustomTextInput';
 import CustonButton from '../components/CustomButton';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import AsyncStorage from '@react-native-community/async-storage';
 
 
 export default class RegisterScreen extends Component {
@@ -103,8 +104,8 @@ export default class RegisterScreen extends Component {
               <Text style={{fontSize:20,marginLeft:20,color:R.color.textInputBorderColor}}>I agree the Terms & Conditions</Text>
         </View>
         <CustonButton title='REGISTER' onPress={()=>{
-        
-          this.registerUser(this.state.firstName,this.state.lastName,this.state.email,this.state.password,this.state.confirmPassword,this.state.gender,this.state.phoneNo)
+            
+         this.registerUser(this.state.firstName,this.state.lastName,this.state.email,this.state.password,this.state.confirmPassword,this.state.gender,this.state.phoneNo)
         }}/>
 
       </View>

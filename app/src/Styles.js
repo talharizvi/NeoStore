@@ -31,16 +31,11 @@ const style=StyleSheet.create({
          marginTop:20  
     },
     buttonRedStyle:{
-      flexDirection: 'column',
+      
       justifyContent: 'center',
       borderRadius: 5,
       backgroundColor: R.color.backgroundColorDefault,
-      marginBottom: 20,
-      paddingTop: 10, 
-      paddingBottom:10,
-      marginTop:20,
-      marginLeft:10,
-      marginRight:10  
+       
  },
     toolbarTitleStyle:{
       flex: 1,

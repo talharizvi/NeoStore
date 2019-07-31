@@ -3,11 +3,15 @@ import {View,Text,TouchableOpacity} from 'react-native';
 import R from '../R';
 import style from '../Styles';
 
-const CustomButtonRed =({title})=> {
+const CustomButtonRed =({title,onPress})=> {
     return(
 
-     <TouchableOpacity style={style.buttonRedStyle}>
-         <Text style={{fontSize:20,textAlign:'center',color:R.color.textInputBorderColor}}>{title}</Text>
+     <TouchableOpacity style={{
+        marginHorizontal:20, 
+        padding:5,
+        borderRadius: 5,
+        backgroundColor: R.color.backgroundColorDefault,alignItems:'center'}} onPress={onPress}>
+         <Text style={{fontSize:20,padding:5,color:R.color.textInputBorderColor}}>{title}</Text>
      </TouchableOpacity>
     
 

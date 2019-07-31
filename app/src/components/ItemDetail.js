@@ -3,17 +3,13 @@ import React, { Component } from 'react';
 import {View,Image,Text,} from "react-native";
 import StarFilled from './StarFilled';
 import StarUnfilled from './StarUnfilled';
-
+import R from '../R';
 
 
 
 const ItemDetail=({itemImage,itemName,itemProducer,itemCost,itemRating})=>{
-    
-    
-   
 
     return(   
-    
     <View  style={{flexDirection: 'row',margin:10}}>
         <View>
             <Image source={{uri:itemImage}} style={{height:80,width:80}}></Image>
@@ -21,12 +17,12 @@ const ItemDetail=({itemImage,itemName,itemProducer,itemCost,itemRating})=>{
 
         <View>    
             <View style={{marginLeft:10}}>
-                <Text>{itemName}</Text>
-                <Text>{itemProducer}</Text>
+                <Text style={{fontFamily:'gotham_medium'}}>{itemName}</Text>
+                <Text style={{fontFamily:'gotham_medium'}}>{itemProducer}</Text>
             </View>
 
-            <View style={{margin:10,flexDirection:'row',}}>
-                <Text>{itemCost}</Text>
+            <View style={{margin:10,flexDirection:'row'}}>
+                <Text style={{fontFamily:'gotham_medium',color:R.color.backgroundColorDefault}}>Rs {itemCost}</Text>
                 <View style={{flexDirection:'row',marginLeft:150}}>{renderRating(itemRating)}</View>
             </View>
 

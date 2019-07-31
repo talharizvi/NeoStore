@@ -2,7 +2,8 @@
 const fonts={
     GothamBold:"GothamBold",
     GothamBook:"GothamBook",
-    GothamMedium:"GothamMedium"
+    GothamMedium:"GothamMedium",
+   // Pacifico:"Pacifico"
 }
 
 export default fonts

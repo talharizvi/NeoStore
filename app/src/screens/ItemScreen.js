@@ -4,22 +4,23 @@ import ItemDetail from '../components/ItemDetail';
 import R from '../R';
 
 
-export default class TableScreen extends Component {
+export default class ItemScreen extends Component {
   
-  static navigationOptions={
-        
-    title:'Tables',
+  static navigationOptions=({navigation})=>({
+      
+    title:navigation.getParam('itemCategory',"Table"),
     headerStyle:{
         backgroundColor:R.color.backgroundColorDefault
     },
     headerTintColor:R.color.textInputBorderColor
 
-}
+})
 
     state={items:[]}
     
     componentDidMount(){
-        categoryId=1
+      
+        categoryId=this.props.navigation.getParam("productCategoryId",1)
         return fetch(`http://staging.php-dev.in:8844/trainingapp/api/products/getList?product_category_id=${categoryId}`)
             .then((response)=>response.json())
             .then((responseJson)=>{
@@ -35,13 +36,13 @@ export default class TableScreen extends Component {
     renderItems(){
       return(
         this.state.items.map((item)=>
-        // <ScrollView>
-          <TouchableOpacity onPress={()=>{
+       
+          <TouchableOpacity key={item.id} onPress={()=>{
             this.props.navigation.navigate('Detail',{productId:item.id,productName:item.name})
             }}>  
            <ItemDetail itemImage={item.product_images} itemName={item.name} itemProducer={item.producer} itemCost={item.cost} itemRating={item.rating} />
            </TouchableOpacity>
-        // </ScrollView>
+     
         )
       )
     }

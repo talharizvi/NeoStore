@@ -16,7 +16,10 @@ export default class HomeScreen extends Component {
     
     }
 
-    
+   
+    state={
+      productCategoryId:1
+    }
 
   render() {
     return (
@@ -32,13 +35,12 @@ export default class HomeScreen extends Component {
         
         <View style={{flex:3,justifyContent:'center',alignItems:'center'}}>
           <FlatList
-             data={[{key:R.images.cupboardicon},{key:R.images.sofaicon},{key:R.images.tableicon},{key:R.images.chairsicon}]}
+             data={[{key:R.images.tableicon,id:1,itemType:'Tables'},{key:R.images.sofaicon,id:3,itemType:'Sofas'},{key:R.images.chairsicon,id:2,itemType:'Chairs'},{key:R.images.cupboardicon,id:4,itemType:'Cupboards'}]}
              renderItem={({item})=>
              <View>
               <TouchableOpacity onPress={()=>{
                 
-               this.props.navigation.navigate('Table')}}>
-                  {/* this.props.navigation.toggleDrawer()}}> */}
+               this.props.navigation.navigate('Item',{productCategoryId:item.id,itemCategory:item.itemType})}}>
                  <Image source={item.key} style={{margin:6}}></Image>
               </TouchableOpacity>
              </View>}

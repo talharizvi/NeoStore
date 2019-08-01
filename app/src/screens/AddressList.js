@@ -12,11 +12,22 @@ export default class AddressList extends Component{
         super(props)
         this.state={
             addressName:'',
-            addressObj:''
+            addressObj:'',
+            accessToken:''
         }
+        this.getAccessTokenData()
         this.getAddress()
     }
     
+    getAccessTokenData=async()=>{
+        try{
+            let accessToken = await AsyncStorage.getItem('access_token')
+            this.setState({accessToken:accessToken})
+            console.log(accessToken)        
+          }catch(error){
+            console.log(error)
+          }
+    }
    
 
     placeOrder(address){
@@ -24,7 +35,7 @@ export default class AddressList extends Component{
         fetch('http://staging.php-dev.in:8844/trainingapp/api/order',{
             method:'POST',
             headers:{
-                access_token:'5d31b3f1ef96b',
+                access_token:this.state.accessToken,
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body:
@@ -68,12 +79,12 @@ export default class AddressList extends Component{
             
             <View>
                 
-                <View style={{margin:5,borderColor:R.color.blackColor,borderWidth:2}}>
-                    <Text>{this.state.addressObj.address}</Text>
-                    <Text>{this.state.addressObj.city}</Text>
-                    <View style={{flexDirection:'row'}}> 
-                    <Text style={{marginRight:10}}>{this.state.addressObj.zipCode}</Text>
-                    <Text>{this.state.addressObj.country}</Text>
+                <View style={{margin:5,borderColor:R.color.blackColor,borderWidth:2,}}>
+                    <Text style={{font_family:"gotham_book"}}>{this.state.addressObj.address}</Text>
+                    <Text style={{font_family:"gotham_book"}}>{this.state.addressObj.city}</Text>
+                    <View style={{flexDirection:'row',font_family:"gotham_book"}}> 
+                    <Text style={{marginRight:10,font_family:"gotham_book"}}>{this.state.addressObj.zipCode}</Text>
+                    <Text style={{font_family:"gotham_book"}}>{this.state.addressObj.country}</Text>
                     </View>
                 </View>
                 

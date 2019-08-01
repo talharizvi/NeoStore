@@ -4,45 +4,66 @@ import R from '../R';
 import CustomText from '../components/CustomText';
 import CustomButton from '../components/CustomButton';
 import style from '../Styles';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class MyAccount extends Component{
 
   static navigationOptions={
         
     title:'MyAccount',
+    
     headerStyle:{
-        backgroundColor:R.color.backgroundColorDefault
+        backgroundColor:R.color.backgroundColorDefault,
     },
-    headerTintColor:R.color.textInputBorderColor
+    headerTitleStyle:{
+      fontSize: 20,
+      color:R.color.textInputBorderColor,
+      fontFamily: 'gotham_medium' 
+    },
+   
 
 }
 
   state={
     firstName:'FirstName',
-    dataSource:''
+    dataSource:'',
+    accessToken:''
   }
 
   componentDidMount(){
+    this.getAccessTokenData()
+  }
+
+  getUserData(){
     fetch('http://staging.php-dev.in:8844/trainingapp/api/users/getUserData',{
       method:'GET',
       headers:{
-        access_token:'5d31b3f1ef96b',
+        access_token:this.state.accessToken,
         'Content-Type': 'application/x-www-form-urlencoded',
       }
     }).then((response)=>response.json())
     .then((responseJson)=>{
       this.setState({dataSource:responseJson.data.user_data})
-      console.log(responseJson)
+     
     })
   }
+
+  getAccessTokenData=async()=>{
+    try{
+        let accessToken = await AsyncStorage.getItem('access_token')
+        this.setState({accessToken:accessToken})
+       
+        this.getUserData()        
+      }catch(error){
+        console.log(error)
+      }
+}
 
     render(){
         return(
         <View style={{flex:1,backgroundColor:R.color.backgroundColorDefault,alignItems: "center"}}>
           <View style={{alignItems:'center', paddingTop:30}}>
             <Image source={{uri:'https://facebook.github.io/react-native/docs/assets/favicon.png'}} style={style.roundImageStyle}></Image>
-              <Text style={{color:R.color.textInputBorderColor,fontSize:20}}>{this.state.userName}</Text>  
-              <Text style={{color:R.color.textInputBorderColor}}>{this.state.userEmail}</Text>
           </View>
           <CustomText sourceImage={R.images.username_icon} textTitle={this.state.dataSource.first_name} />
           <CustomText sourceImage={R.images.username_icon} textTitle={this.state.dataSource.last_name}  />

@@ -74,7 +74,7 @@ export default class LoginScreen extends Component{
         return(
         <View style={ {flex: 1,backgroundColor:R.color.backgroundColorDefault,alignItems: "center", }}>
 
-            <Text style={style.headerTitleStyle}>{R.strings.AppName}</Text>
+            <Text style={[style.headerTitleStyle]}>{R.strings.AppName}</Text>
           
             <CustomTextInput sourceImage={R.images.username_icon} placeholdeValue='UserName' onChangeText={(userName)=>{this.setState({userName})}}/>
 
@@ -87,10 +87,10 @@ export default class LoginScreen extends Component{
                 }}/>
 
 
-            <Text style={{marginTop:10,color:R.color.textInputBorderColor,fontSize:20}} onPress={()=>{this.props.navigation.navigate('ForgotPassWord')}}>Forgot Password?</Text>
+            <Text style={{marginTop:10,color:R.color.textInputBorderColor,fontSize:20,fontFamily:"gotham_book"}} onPress={()=>{this.props.navigation.navigate('ForgotPassWord')}}>Forgot Password?</Text>
         {this.state.showIndicator && (<ActivityIndicator size='large' color={R.color.textInputBorderColor}/>)}
             <View style={{flex:1 ,flexDirection:'row',alignItems:'center',justifyContent:'flex-end',marginTop:140}}>
-                <Text style={{color:R.color.textInputBorderColor,fontSize:20}} onPress={()=>{
+                <Text style={{color:R.color.textInputBorderColor,fontSize:20,fontFamily:"gotham_book"}} onPress={()=>{
                     this.props.navigation.navigate('Register')
                 }}
                 >DONT HAVE Account?</Text>

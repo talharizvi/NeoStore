@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {View,Text,Image,FlatList,Button,Picker,TouchableOpacity} from 'react-native';
 import R from '../R';
-import CustomButton from '../components/CustomButton';
 import CustomButtonRed from '../components/CustomButtonRed';
-
+import AsyncStorage from '@react-native-community/async-storage';
 
 
 export default class CartScreen extends Component{
@@ -14,29 +13,47 @@ export default class CartScreen extends Component{
         headerStyle:{
             backgroundColor:R.color.backgroundColorDefault
         },
-        headerTintColor:R.color.textInputBorderColor
+        headerTitleStyle:{
+            fontSize: 20,
+            color:R.color.textInputBorderColor,
+            fontFamily: 'gotham_medium' 
+          },
     }
 
-    state={
-        itemList:[],
-        pickerValueHolder:'4',
-        pickValue0: 1,
-        totalAmount:'',
-       
+    constructor(props){
+        super(props)
+        this.state={
+            itemList:[],
+            pickerValueHolder:'4',
+            pickValue0: 1,
+            totalAmount:'',
+            accessToken:'',
+        }
+        
     }
+
 
 
     componentDidMount(){
-      
-        this.getCartItemsFromApi()
+        this.getAccessTokenData()
+    }
 
+    getAccessTokenData=async()=>{
+        try{
+            let accessToken = await AsyncStorage.getItem('access_token')
+            this.setState({accessToken:accessToken})
+            console.log(accessToken)
+            this.getCartItemsFromApi()        
+          }catch(error){
+            console.log(error)
+          }
     }
 
     getCartItemsFromApi(){
         fetch('http://staging.php-dev.in:8844/trainingapp/api/cart',{
             method:'GET',
             headers:{
-                access_token:'5d31b3f1ef96b',
+                access_token:this.state.accessToken,
                 'Content-Type': 'application/x-www-form-urlencoded',
             }
         }).then((response)=>response.json())
@@ -129,8 +146,8 @@ export default class CartScreen extends Component{
                         </View>
 
                             <View>
-                                <Text>{item.product.name}</Text>
-                                <Text>{item.product.product_category}</Text>
+                                <Text style={{fontFamily:"gotham_book"}}>{item.product.name}</Text>
+                                <Text style={{fontFamily:"gotham_book"}}>{item.product.product_category}</Text>
                     
                                  {this.renderPickerData(item.product_id,index)}
                             </View>
@@ -140,7 +157,7 @@ export default class CartScreen extends Component{
                                 }}>
                                     <Image source={R.images.delete} style={{width:50,height:50}}></Image>    
                                 </TouchableOpacity>
-                                <Text>Rs{item.product.sub_total}</Text>
+                                <Text style={{fontFamily:"gotham_book"}}>Rs{item.product.sub_total}</Text>
                             </View> 
                         
                     </View>
@@ -149,8 +166,8 @@ export default class CartScreen extends Component{
 
             </FlatList>
             <View style={{flexDirection:'row',justifyContent:'space-between',margin:10}}>
-            <Text>Total</Text>
-            <Text style={{color:R.color.backgroundColorDefault}}>Rs {this.state.totalAmount}</Text>
+            <Text style={{fontFamily:"gotham_book"}}>Total</Text>
+            <Text style={{color:R.color.backgroundColorDefault,fontFamily:"gotham_book"}}>Rs {this.state.totalAmount}</Text>
             </View>
             
             <CustomButtonRed title="Order Now" onPress={()=>{

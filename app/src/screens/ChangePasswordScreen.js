@@ -3,6 +3,7 @@ import {View,Text,Image} from 'react-native';
 import CustomTextInput from '../components/CustomTextInput';
 import R from '../R';
 import CustomButton from '../components/CustomButton';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class ChangePasswordScreen extends Component{
 
@@ -11,7 +12,9 @@ export default class ChangePasswordScreen extends Component{
         this.state={
             oldPassword:'',
             newPassword:'',
-            confirmPassword:''
+            confirmPassword:'',
+            accessToken:'',
+            
         }
     }
 
@@ -25,16 +28,35 @@ export default class ChangePasswordScreen extends Component{
     
     }
 
+    componentDidMount(){
+        this.getAccessTokenData()
+    }
+
+    getAccessTokenData=async()=>{
+        try{
+            let accessToken = await AsyncStorage.getItem('access_token')
+            this.setState({accessToken:accessToken})
+            console.log(accessToken)
+               
+          }catch(error){
+            console.log(error)
+          }
+    }
+
     changePassword(oldPassword,newPassword,confirmPassword){
         fetch('http://staging.php-dev.in:8844/trainingapp/api/users/change',{
           method:'POST',
           headers:{
-            access_token:'5d31b3f1ef96b',
+            access_token:this.state.accessToken,
             'Content-Type': 'application/x-www-form-urlencoded',
           },body:`old_password=${oldPassword}&password=${newPassword}&confirm_password=${confirmPassword}`
         }).then((response)=>response.json())
         .then((responseJson)=>{
-          console.log(responseJson)
+            console.log(responseJson)
+            if(responseJson.status==200){
+                alert(responseJson.message)
+            }
+          
         })
       }
     

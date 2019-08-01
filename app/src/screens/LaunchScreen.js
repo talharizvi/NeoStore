@@ -11,7 +11,11 @@ export default class LaunchScreen extends Component{
         headerStyle:{
             backgroundColor:R.color.backgroundColorDefault
         },
-         headerTintColor:R.color.textInputBorderColor
+        headerTitleStyle:{
+            fontSize: 20,
+            color:R.color.textInputBorderColor,
+            fontFamily: 'gotham_medium' 
+          },
     
     }
 
@@ -23,11 +27,9 @@ export default class LaunchScreen extends Component{
 
     getAccessTokenData=async()=>{
         try{
-            let accessToken = ''
-            let testToken = await AsyncStorage.getItem('access_token')
-
-            console.log(testToken)        
-            if(testToken!=null ){
+            let accessToken = await AsyncStorage.getItem('access_token')
+            console.log(accessToken)        
+            if(accessToken!=null ){
                  this.props.navigation.navigate("HomeStack")   
             }else{
                 this.props.navigation.navigate("SessionStack")

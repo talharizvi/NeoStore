@@ -31,7 +31,7 @@ const MainNavigator= createStackNavigator({
     MyOrder:{screen:MyOrder},
     OrderDetail:{screen:OrderDetail},
     ChangePassword:{screen:ChangePasswordScreen}
-},
+},{headerLayoutPreset: 'center'}
 );
 
 

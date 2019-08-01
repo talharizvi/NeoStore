@@ -13,7 +13,11 @@ export default class ForgotPasswordScreen extends Component {
     headerStyle:{
         backgroundColor:R.color.backgroundColorDefault
     },
-    headerTintColor:R.color.textInputBorderColor
+    headerTitleStyle:{
+      fontSize: 20,
+      color:R.color.textInputBorderColor,
+      fontFamily: 'gotham_medium' 
+    },
 
 }
 

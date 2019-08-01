@@ -6,6 +6,7 @@ import style from '../Styles';
 import CustomButtonRed from '../components/CustomButtonRed';
 import StarFilled from '../components/StarFilled';
 import StarUnfilled from '../components/StarUnfilled';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class DetailScreen extends Component {
   
@@ -14,7 +15,11 @@ export default class DetailScreen extends Component {
         headerStyle:{
             backgroundColor:R.color.backgroundColorDefault
         },
-        headerTintColor:R.color.textInputBorderColor
+        headerTitleStyle:{
+          fontSize: 20,
+          color:R.color.textInputBorderColor,
+          fontFamily: 'gotham_medium' 
+        },
     });
 
     constructor(props){
@@ -24,12 +29,15 @@ export default class DetailScreen extends Component {
             productImages:[],
             modalItemVisible: false,
             modelItemRatingVisible:false,
-            itemQuantity:''
+            itemQuantity:'',
+            accessToken:''
             }    
     }
 
     
     componentDidMount(){
+
+        this.getAccessTokenData()
         const id = this.props.navigation.getParam('productId',1)
          
         console.log(`component id :${id}`)
@@ -68,14 +76,25 @@ export default class DetailScreen extends Component {
     
     setModelItemRatingVisible(visible){
         this.setState({modelItemRatingVisible:visible});
-    }  
+    }
+    
+    getAccessTokenData=async()=>{
+      try{
+          let accessToken = await AsyncStorage.getItem('access_token')
+          this.setState({accessToken:accessToken})
+          console.log(accessToken)
+             
+        }catch(error){
+          console.log(error)
+        }
+  }
     
     addItemToCart(productId,quantity){
       
       fetch('http://staging.php-dev.in:8844/trainingapp/api/addToCart',{
         method:'POST',
         headers:{
-          access_token:'5d31b3f1ef96b',
+          access_token:this.state.accessToken,
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body:
@@ -121,7 +140,7 @@ export default class DetailScreen extends Component {
                   </View>
 
                   <View style={{alignItems:'center'}}>
-                    <TextInput style={{alignItems:'center',justifyContent:'center'}} placeholder='Enter Qty' onChangeText={(itemQuantity)=>this.setState({itemQuantity})}></TextInput>
+                    <TextInput style={{alignItems:'center',justifyContent:'center',fontFamily:"gotham_book"}} placeholder='Enter Qty' onChangeText={(itemQuantity)=>this.setState({itemQuantity})} ></TextInput>
                   </View>
 
                   <View style={style.buttonModalStyle}>
@@ -133,7 +152,7 @@ export default class DetailScreen extends Component {
                   }} >
 
                       <View style={{alignItems:'center'}}>        
-                      <Text style={{color:R.color.textInputBorderColor}} >Submit</Text>
+                      <Text style={{color:R.color.textInputBorderColor,fontFamily:"gotham_book"}} >Submit</Text>
                       </View>  
                     </TouchableOpacity>
                   </View>
@@ -169,7 +188,7 @@ export default class DetailScreen extends Component {
                   }} >
 
                       <View style={{alignItems:'center'}}>        
-                      <Text style={{color:R.color.textInputBorderColor}} >Submit</Text>
+                      <Text style={{color:R.color.textInputBorderColor,fontFamily:"gotham_book"}} >Submit</Text>
                       </View>  
                     </TouchableOpacity>
                   </View>

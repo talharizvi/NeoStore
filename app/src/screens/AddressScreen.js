@@ -14,7 +14,11 @@ export default class AddressScreen extends Component{
         headerStyle:{
             backgroundColor:R.color.backgroundColorDefault
         },
-        headerTintColor:R.color.textInputBorderColor
+        headerTitleStyle:{
+            fontSize: 20,
+            color:R.color.textInputBorderColor,
+            fontFamily: 'gotham_medium' 
+          },
     }
 
     state=[
@@ -49,21 +53,21 @@ export default class AddressScreen extends Component{
        
         return(
             <View>
-                <Text> Address</Text>
+                <Text style={{font_family:"gotham_medium"}}> Address</Text>
                 <TextInput placeholder={"Neosoft Technologies 4th floor,\nThe Ruby,29,Senapati Bapat Marg,\nDadar (West) Mumbai-400028.INDIA"} onChangeText={(address)=>{this.setState({address})
 
                 }}></TextInput>
-                <Text>CITY</Text>
+                <Text style={{font_family:"gotham_medium"}}>CITY</Text>
                 <TextInput placeholder="LANDMARK" onChangeText={(city)=>{this.setState({city})}}></TextInput>
                 
                 <View style={{flexDirection:'row'}}>
                     <View style={{marginRight:150}}>
-                        <Text>CITY</Text>
+                        <Text style={{font_family:"gotham_medium"}}>CITY</Text>
                         <TextInput placeholder="MUMBAI"/>
                     </View>
 
                     <View>
-                        <Text>STATE</Text>
+                        <Text style={{font_family:"gotham_medium"}}>STATE</Text>
                         <TextInput placeholder="MAHARASHTRA"/>
                     </View>
                 </View>
@@ -72,12 +76,12 @@ export default class AddressScreen extends Component{
 
                 <View style={{flexDirection:'row'}}>
                     <View style={{marginRight:150}}>
-                        <Text>ZIP CODE</Text>
+                        <Text style={{font_family:"gotham_medium"}}>ZIP CODE</Text>
                         <TextInput placeholder="10066" onChangeText={(zipCode)=>{this.setState({zipCode})}}/>
                     </View>
 
                     <View>
-                        <Text >COUNTRY</Text>
+                        <Text style={{font_family:"gotham_medium"}}>COUNTRY</Text>
                         <TextInput placeholder="INDIA" onChangeText={(country)=>{this.setState({country})}}/>
                     </View>
                 </View>

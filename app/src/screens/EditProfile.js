@@ -15,7 +15,7 @@ export default class EditProfile extends Component{
       email:'',
       phoneNo:'',
       dob:'',
-
+      accessToken:''
     }
   }
 
@@ -25,8 +25,27 @@ export default class EditProfile extends Component{
     headerStyle:{
         backgroundColor:R.color.backgroundColorDefault
     },
-    headerTintColor:R.color.textInputBorderColor
+    headerTitleStyle:{
+      fontSize: 20,
+      color:R.color.textInputBorderColor,
+      fontFamily: 'gotham_medium' 
+    },
 
+}
+
+getAccessTokenData=async()=>{
+  try{
+      let accessToken = await AsyncStorage.getItem('access_token')
+      this.setState({accessToken:accessToken})
+      console.log(accessToken)
+         
+    }catch(error){
+      console.log(error)
+    }
+}
+
+componentDidMount(){
+  this.getAccessTokenData()
 }
 
   updateAccount(firstName,lastName,email,dob,profilePic,phoneNo){
@@ -35,7 +54,7 @@ export default class EditProfile extends Component{
       method:'POST',
       headers:{
         'Content-Type': 'application/x-www-form-urlencoded',
-        access_token:'5d31b3f1ef96b',
+        access_token:this.state.accessToken,
       },
       body:`first_name=${firstName}&last_name=${lastName}&email=${email}&dob=${dob}&profile_pic=${profilePic}&phone_no=${phoneNo}`
     }).then((response)=>response.json())

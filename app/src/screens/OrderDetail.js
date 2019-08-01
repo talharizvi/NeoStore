@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {View,Text,Image} from 'react-native';
 import R from '../R';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class OrderDetail extends Component{
 
@@ -10,19 +11,35 @@ export default class OrderDetail extends Component{
         headerStyle:{
             backgroundColor:R.color.backgroundColorDefault
         },
-        headerTintColor:R.color.textInputBorderColor
+        headerTitleStyle:{
+            fontSize: 20,
+            color:R.color.textInputBorderColor,
+            fontFamily: 'gotham_medium' 
+          },
     })
 
-    state={
-        itemArr:[]
+    constructor(props){
+        super(props)
+        this.state={
+            itemArr:[],
+            accessToken:''
+        }
     }
+    
 
     componentDidMount(){
+
+        this.getAccessTokenData()
+        
+        
+    }
+
+    getOrderDetail(){
         const id = this.props.navigation.getParam('orderId',1)
         fetch(`http://staging.php-dev.in:8844/trainingapp/api/orderDetail?order_id=${id}`,{
             method:'GET',
             headers:{
-              access_token:'5d31b3f1ef96b',
+              access_token:this.state.accessToken,
               'Content-Type': 'application/x-www-form-urlencoded',
             }
         }).then((response)=>response.json())
@@ -33,6 +50,17 @@ export default class OrderDetail extends Component{
            
           })
     }
+
+    getAccessTokenData=async()=>{
+        try{
+            let accessToken = await AsyncStorage.getItem('access_token')
+            this.setState({accessToken:accessToken})
+            this.getOrderDetail()
+            console.log(accessToken)        
+          }catch(error){
+            console.log(error)
+          }
+      }
 
     renderItems(){
         console.log("itemArray"+this.state.itemArr)
@@ -45,13 +73,13 @@ export default class OrderDetail extends Component{
 
                 <View>
                     <View style={{marginHorizontal:10}}>
-                        <Text>{item.prod_name}</Text>
-                        <Text>{item.prod_cat_name}</Text>
+                        <Text style={{fontFamily:"gotham_book"}}>{item.prod_name}</Text>
+                        <Text style={{fontFamily:"gotham_book"}}>{item.prod_cat_name}</Text>
                     </View>
 
                     <View style={{flexDirection:'row',justifyContent:'space-between',marginHorizontal:10,marginTop:20}}>
-                        <Text>QTY : {item.quantity}</Text>
-                        <Text>Rs{item.total}</Text>
+                        <Text style={{fontFamily:"gotham_book"}}>QTY : {item.quantity}</Text>
+                        <Text style={{fontFamily:"gotham_book"}}>Rs{item.total}</Text>
                     </View>
                 </View>
             </View>

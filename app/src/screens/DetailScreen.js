@@ -160,7 +160,7 @@ export default class DetailScreen extends Component {
 
                   <Image source={{uri:this.state.bigImage}} style={{width:350,height:350,borderWidth:4}}></Image>
         
-                  <StarRating/>
+                  <StarRating productId={this.state.itemDetail.id}/>
                  
                   <View style={style.buttonModalStyle}>
                     <TouchableOpacity

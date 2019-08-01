@@ -19,7 +19,21 @@ export default class MyAccount extends Component{
 
   state={
     firstName:'FirstName',
+    dataSource:''
+  }
 
+  componentDidMount(){
+    fetch('http://staging.php-dev.in:8844/trainingapp/api/users/getUserData',{
+      method:'GET',
+      headers:{
+        access_token:'5d31b3f1ef96b',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }
+    }).then((response)=>response.json())
+    .then((responseJson)=>{
+      this.setState({dataSource:responseJson.data.user_data})
+      console.log(responseJson)
+    })
   }
 
     render(){
@@ -30,13 +44,16 @@ export default class MyAccount extends Component{
               <Text style={{color:R.color.textInputBorderColor,fontSize:20}}>{this.state.userName}</Text>  
               <Text style={{color:R.color.textInputBorderColor}}>{this.state.userEmail}</Text>
           </View>
-          <CustomText sourceImage={R.images.username_icon} textTitle='First Name' />
-          <CustomText sourceImage={R.images.username_icon} textTitle='Last Name'  />
-          <CustomText sourceImage={R.images.email_icon} textTitle='Email' />
-          <CustomText sourceImage={R.images.cellphone} textTitle='Phone Number' />
-          <CustomText sourceImage={R.images.dob_icon} textTitle='Birth' />
+          <CustomText sourceImage={R.images.username_icon} textTitle={this.state.dataSource.first_name} />
+          <CustomText sourceImage={R.images.username_icon} textTitle={this.state.dataSource.last_name}  />
+          <CustomText sourceImage={R.images.email_icon} textTitle={this.state.dataSource.email} />
+          <CustomText sourceImage={R.images.cellphone} textTitle={this.state.dataSource.phone_no} />
+          <CustomText sourceImage={R.images.dob_icon} textTitle={this.state.dataSource.dob} />
           <CustomButton title='Edit Profile' onPress={()=>{
             this.props.navigation.navigate('EditProfile')
+          }}/>
+          <CustomButton title='Reset Password' onPress={()=>{
+              this.props.navigation.navigate('ChangePassword')
           }}/>
 
         </View>)

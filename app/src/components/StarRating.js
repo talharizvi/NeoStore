@@ -12,8 +12,8 @@ import {
 
 
 export default class StarRating extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       Default_Rating: 1,
       Max_Rating: 5,
@@ -24,7 +24,25 @@ export default class StarRating extends Component {
 }
   updateRating(key) {
     this.setState({ Default_Rating: key });
+    this.callRatingApi(this.props.productId,key)
   }
+
+  callRatingApi(id,rate){
+    fetch('http://staging.php-dev.in:8844/trainingapp/api/products/setRating',{
+            method:'POST',
+            headers:{
+               
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body:
+                `product_id=${id}rating=${rate}`
+            
+        }).then((response)=>response.json())
+        .then((responseJson)=>{
+          console.log(responseJson)
+        })
+  }
+
   render() {
     let ratingArray = [];
     //Array to hold the filled or empty Stars
@@ -33,7 +51,9 @@ export default class StarRating extends Component {
         <TouchableOpacity
           activeOpacity={0.7}
           key={i}
-          onPress={this.updateRating.bind(this, i)}
+          onPress={this.updateRating.bind(this, i)
+            
+          }
           >
           <Image
             style={styles.StarImage}
@@ -47,7 +67,7 @@ export default class StarRating extends Component {
       );
     }
     return (
-      <View style={styles.MainContainer}>
+      <View >
         <View style={styles.childView}>{ratingArray}</View>
       </View>
     );
@@ -55,11 +75,7 @@ export default class StarRating extends Component {
 }
 
 const styles = StyleSheet.create({
-  MainContainer: {
-    
-    
-   // paddingTop: Platform.OS === 'ios' ? 20 : 0,
-  },
+ 
   childView: {
     justifyContent: 'center',
     flexDirection: 'row',

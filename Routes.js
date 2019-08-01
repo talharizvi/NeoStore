@@ -15,24 +15,22 @@ import LaunchScreen from "./app/src/screens/LaunchScreen";
 import EditProfile from "./app/src/screens/EditProfile";
 import AddressList from "./app/src/screens/AddressList";
 import OrderDetail from "./app/src/screens/OrderDetail";
+import ChangePasswordScreen from "./app/src/screens/ChangePasswordScreen";
 
 
 const MainNavigator= createStackNavigator({
-  Home:{screen:HomeScreen},
-  Address:{screen:AddressScreen}, 
-  AddressList:{screen:AddressList},
-   
-  MyCart:{screen:CartScreen},
-    
-    
+    Home:{screen:HomeScreen},
+    Address:{screen:AddressScreen}, 
+    AddressList:{screen:AddressList},
+    MyCart:{screen:CartScreen},
     EditProfile:{screen:EditProfile},
     Item:{screen:ItemScreen},
-   
     Detail:{screen:DetailScreen},
     StoreLocator:{screen:StoreLocator},
     MyAccount:{screen:MyAccount},
     MyOrder:{screen:MyOrder},
-    OrderDetail:{screen:OrderDetail}
+    OrderDetail:{screen:OrderDetail},
+    ChangePassword:{screen:ChangePasswordScreen}
 },
 );
 

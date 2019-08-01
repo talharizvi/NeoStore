@@ -9,8 +9,8 @@ const CustomTextInput=({sourceImage,placeholdeValue,onChangeText})=>{
          <Image style={{justifyContent:'center',marginHorizontal:10} } source={sourceImage}
          />
 
-         <TextInput style ={{flex:1,fontSize:30}} underlineColorAndroid={"transparent"} placeholderTextColor={R.color.textInputBorderColor} placeholder={placeholdeValue}
-            onChangeText={onChangeText}
+         <TextInput style ={{flex:1,fontSize:30,color:R.color.textInputBorderColor}} underlineColorAndroid={"transparent"} placeholderTextColor={R.color.textInputBorderColor} placeholder={placeholdeValue}
+            onChangeText={onChangeText} 
          >
 
          </TextInput>   

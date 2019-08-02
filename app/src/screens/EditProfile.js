@@ -4,6 +4,7 @@ import CustomTextInput from '../components/CustomTextInput';
 import R from '../R';
 import CustomButton from '../components/CustomButton';
 import style from '../Styles';
+import Api from '../components/Api';
 
 export default class EditProfile extends Component{
 
@@ -18,20 +19,6 @@ export default class EditProfile extends Component{
       accessToken:''
     }
   }
-
-  static navigationOptions={
-        
-    title:'EditProfile',
-    headerStyle:{
-        backgroundColor:R.color.backgroundColorDefault
-    },
-    headerTitleStyle:{
-      fontSize: 20,
-      color:R.color.textInputBorderColor,
-      fontFamily: 'gotham_medium' 
-    },
-
-}
 
 getAccessTokenData=async()=>{
   try{
@@ -50,14 +37,7 @@ componentDidMount(){
 
   updateAccount(firstName,lastName,email,dob,profilePic,phoneNo){
     console.log("called update")
-    fetch('http://staging.php-dev.in:8844/trainingapp/api/users/update',{
-      method:'POST',
-      headers:{
-        'Content-Type': 'application/x-www-form-urlencoded',
-        access_token:this.state.accessToken,
-      },
-      body:`first_name=${firstName}&last_name=${lastName}&email=${email}&dob=${dob}&profile_pic=${profilePic}&phone_no=${phoneNo}`
-    }).then((response)=>response.json())
+    return Api('users/update','POST',this.state.accessToken,`first_name=${firstName}&last_name=${lastName}&email=${email}&dob=${dob}&profile_pic=${profilePic}&phone_no=${phoneNo}`)
     .then((responseJson)=>{
       alert(responseJson.message)
     })

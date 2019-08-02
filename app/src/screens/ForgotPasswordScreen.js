@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import R from '../R';
 import CustomTextInput from '../components/CustomTextInput';
 import CustonButton from '../components/CustomButton';
+import Api from '../components/Api';
 
 
 export default class ForgotPasswordScreen extends Component {
@@ -26,13 +27,7 @@ export default class ForgotPasswordScreen extends Component {
   }
 
   forgotPassword(email){
-    fetch('http://staging.php-dev.in:8844/trainingapp/api/users/forgot',{
-      method:'POST',
-      headers:{
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body:`email=${email}`
-    }).then((response)=>response.json())
+    return Api('users/forgot','POST',null,`email=${email}`)
     .then((responseJson)=>{
       console.log(responseJson)
     })

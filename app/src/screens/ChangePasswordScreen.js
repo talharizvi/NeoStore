@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
-import {View,Text,Image} from 'react-native';
+import {View,Text,Image,StatusBar} from 'react-native';
 import CustomTextInput from '../components/CustomTextInput';
 import R from '../R';
 import CustomButton from '../components/CustomButton';
 import AsyncStorage from '@react-native-community/async-storage';
+import Api from '../components/Api';
 
 export default class ChangePasswordScreen extends Component{
 
@@ -18,15 +19,7 @@ export default class ChangePasswordScreen extends Component{
         }
     }
 
-    static navigationOptions={
-        
-        title:'ChangePassword',
-        headerStyle:{
-            backgroundColor:R.color.backgroundColorDefault
-        },
-        headerTintColor:R.color.textInputBorderColor
     
-    }
 
     componentDidMount(){
         this.getAccessTokenData()
@@ -44,26 +37,23 @@ export default class ChangePasswordScreen extends Component{
     }
 
     changePassword(oldPassword,newPassword,confirmPassword){
-        fetch('http://staging.php-dev.in:8844/trainingapp/api/users/change',{
-          method:'POST',
-          headers:{
-            access_token:this.state.accessToken,
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },body:`old_password=${oldPassword}&password=${newPassword}&confirm_password=${confirmPassword}`
-        }).then((response)=>response.json())
+      
+        return Api('users/change','POST',this.state.accessToken,`old_password=${oldPassword}&password=${newPassword}&confirm_password=${confirmPassword}`)
         .then((responseJson)=>{
             console.log(responseJson)
             if(responseJson.status==200){
                 alert(responseJson.message)
             }
           
+        }).catch((error)=>{
+            console.error(error)
         })
       }
     
     render(){
         return(<View style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}>
             
-           
+            <StatusBar backgroundColor={R.color.backgroundColorDefault}></StatusBar>
             <CustomTextInput sourceImage={R.images.password_icon} placeholdeValue='Old Password' onChangeText={(oldPassword)=>{this.setState({oldPassword})}}/>
             <CustomTextInput sourceImage={R.images.password_icon} placeholdeValue='New Password' onChangeText={(newPassword)=>{this.setState({newPassword})}}/>
             <CustomTextInput sourceImage={R.images.password_icon} placeholdeValue='Confirm Password' onChangeText={(confirmPassword)=>{this.setState({confirmPassword})}}/> 

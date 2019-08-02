@@ -5,24 +5,11 @@ import CustomText from '../components/CustomText';
 import CustomButton from '../components/CustomButton';
 import style from '../Styles';
 import AsyncStorage from '@react-native-community/async-storage';
+import Api from '../components/Api';
 
 export default class MyAccount extends Component{
 
-  static navigationOptions={
-        
-    title:'MyAccount',
-    
-    headerStyle:{
-        backgroundColor:R.color.backgroundColorDefault,
-    },
-    headerTitleStyle:{
-      fontSize: 20,
-      color:R.color.textInputBorderColor,
-      fontFamily: 'gotham_medium' 
-    },
-   
-
-}
+  
 
   state={
     firstName:'FirstName',
@@ -35,17 +22,16 @@ export default class MyAccount extends Component{
   }
 
   getUserData(){
-    fetch('http://staging.php-dev.in:8844/trainingapp/api/users/getUserData',{
-      method:'GET',
-      headers:{
-        access_token:this.state.accessToken,
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }
-    }).then((response)=>response.json())
-    .then((responseJson)=>{
+  
+    const endPoint='users/getUserData';
+    return Api(endPoint,'GET',this.state.accessToken,null).then((responseJson)=>{
+      console.log(responseJson)
       this.setState({dataSource:responseJson.data.user_data})
-     
     })
+    
+  
+    
+    
   }
 
   getAccessTokenData=async()=>{

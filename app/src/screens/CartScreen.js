@@ -3,22 +3,12 @@ import {View,Text,Image,FlatList,Button,Picker,TouchableOpacity} from 'react-nat
 import R from '../R';
 import CustomButtonRed from '../components/CustomButtonRed';
 import AsyncStorage from '@react-native-community/async-storage';
+import Api from '../components/Api';
 
 
 export default class CartScreen extends Component{
     
-    static navigationOptions={
-        
-        title:'My Cart',
-        headerStyle:{
-            backgroundColor:R.color.backgroundColorDefault
-        },
-        headerTitleStyle:{
-            fontSize: 20,
-            color:R.color.textInputBorderColor,
-            fontFamily: 'gotham_medium' 
-          },
-    }
+   
 
     constructor(props){
         super(props)
@@ -50,53 +40,51 @@ export default class CartScreen extends Component{
     }
 
     getCartItemsFromApi(){
-        fetch('http://staging.php-dev.in:8844/trainingapp/api/cart',{
-            method:'GET',
-            headers:{
-                access_token:this.state.accessToken,
-                'Content-Type': 'application/x-www-form-urlencoded',
-            }
-        }).then((response)=>response.json())
+        // fetch('http://staging.php-dev.in:8844/trainingapp/api/cart',{
+        //     method:'GET',
+        //     headers:{
+        //         access_token:this.state.accessToken,
+        //         'Content-Type': 'application/x-www-form-urlencoded',
+        //     }
+        // }).then((response)=>response.json())
+        return Api('cart','GET',this.state.accessToken,null)
         .then((responseJson)=>{
             console.log(responseJson)
             this.setState({itemList:responseJson.data,totalAmount:responseJson.total})
+        }).catch((error)=>{
+            console.error(error)
         }) 
     }
 
     editCart(productId,quantity){
         console.log("productId:"+productId)
         console.log("quantity:"+quantity)
-        fetch('http://staging.php-dev.in:8844/trainingapp/api/editCart',{
-            method:'POST',
-            headers:{
-                access_token:'5d31b3f1ef96b',
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 
-                `product_id=${productId}&quantity=${quantity}`    
-
-        }).then((response)=>response.json())
+       
+        return Api('editCart','POST',this.state.accessToken,`product_id=${productId}&quantity=${quantity}`)
         .then((responseJson)=>{
             console.log(responseJson)
+            this.getCartItemsFromApi()
         })
        
-        this.getCartItemsFromApi()
+        
     }
 
     deleteItem(productId){
-        fetch('http://staging.php-dev.in:8844/trainingapp/api/deleteCart',{
-            method:'POST',
-            headers:{   
-                access_token:'5d31b3f1ef96b',
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `product_id=${productId}`
-        }).then((response)=>response.json())
+        // fetch('http://staging.php-dev.in:8844/trainingapp/api/deleteCart',{
+        //     method:'POST',
+        //     headers:{   
+        //         access_token:this.state.accessToken,
+        //         'Content-Type': 'application/x-www-form-urlencoded',
+        //     },
+        //     body: `product_id=${productId}`
+        // }).then((response)=>response.json())
+        return Api('deleteCart','POST',this.state.accessToken,`product_id=${productId}`)
         .then((responseJson)=>{
             console.log(responseJson)
+            this.getCartItemsFromApi()
         })
        
-         this.getCartItemsFromApi()
+         
     }
 
     
@@ -146,8 +134,8 @@ export default class CartScreen extends Component{
                         </View>
 
                             <View>
-                                <Text style={{fontFamily:"gotham_book"}}>{item.product.name}</Text>
-                                <Text style={{fontFamily:"gotham_book"}}>{item.product.product_category}</Text>
+                                <Text style={{fontFamily:"gotham_medium"}}>{item.product.name}</Text>
+                                <Text style={{fontFamily:"gotham_medium"}}>{item.product.product_category}</Text>
                     
                                  {this.renderPickerData(item.product_id,index)}
                             </View>
@@ -157,7 +145,7 @@ export default class CartScreen extends Component{
                                 }}>
                                     <Image source={R.images.delete} style={{width:50,height:50}}></Image>    
                                 </TouchableOpacity>
-                                <Text style={{fontFamily:"gotham_book"}}>Rs{item.product.sub_total}</Text>
+                                <Text style={{fontFamily:"gotham_medium"}}>Rs{item.product.sub_total}</Text>
                             </View> 
                         
                     </View>
@@ -166,8 +154,8 @@ export default class CartScreen extends Component{
 
             </FlatList>
             <View style={{flexDirection:'row',justifyContent:'space-between',margin:10}}>
-            <Text style={{fontFamily:"gotham_book"}}>Total</Text>
-            <Text style={{color:R.color.backgroundColorDefault,fontFamily:"gotham_book"}}>Rs {this.state.totalAmount}</Text>
+            <Text style={{fontFamily:"gotham_bold"}}>Total</Text>
+            <Text style={{color:R.color.backgroundColorDefault,fontFamily:"gotham_bold"}}>Rs {this.state.totalAmount}</Text>
             </View>
             
             <CustomButtonRed title="Order Now" onPress={()=>{

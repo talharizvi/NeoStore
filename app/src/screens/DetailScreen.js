@@ -3,10 +3,10 @@ import { View, Text,Image,TouchableOpacity,ScrollView,Button,Modal ,TextInput} f
 import R from '../R';
 import StarRating from '../components/StarRating';
 import style from '../Styles';
-import CustomButtonRed from '../components/CustomButtonRed';
 import StarFilled from '../components/StarFilled';
 import StarUnfilled from '../components/StarUnfilled';
 import AsyncStorage from '@react-native-community/async-storage';
+import Api from '../components/Api';
 
 export default class DetailScreen extends Component {
   
@@ -41,8 +41,9 @@ export default class DetailScreen extends Component {
         const id = this.props.navigation.getParam('productId',1)
          
         console.log(`component id :${id}`)
-        fetch(`http://staging.php-dev.in:8844/trainingapp/api/products/getDetail?product_id=${id}`)
-        .then((response)=>response.json())
+        // fetch(`http://staging.php-dev.in:8844/trainingapp/api/products/getDetail?product_id=${id}`)
+        // .then((response)=>response.json())
+        Api(`products/getDetail?product_id=${id}`,'GET',null,null)
         .then((responseJson)=>{
             console.log(responseJson)
             this.setState({

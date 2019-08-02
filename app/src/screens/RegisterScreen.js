@@ -5,6 +5,7 @@ import CustomTextInput from '../components/CustomTextInput';
 import CustonButton from '../components/CustomButton';
 
 import AsyncStorage from '@react-native-community/async-storage';
+import Api from '../components/Api';
 
 
 export default class RegisterScreen extends Component {
@@ -37,14 +38,8 @@ export default class RegisterScreen extends Component {
     }
      
     registerUser(firstName,lastName,email,password,confirmPassword,gender,phoneNo){
-      fetch('http://staging.php-dev.in:8844/trainingapp/api/users/register',{
-        method:'POST',
-        headers:{
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body:
-          `first_name=${firstName}&last_name=${lastName}&email=${email}&password=${password}&confirm_password=${confirmPassword}&gender=${gender}&phone_no=${phoneNo}`
-      }).then((response)=>response.json())
+     
+      return Api('users/register','POST',null,`first_name=${firstName}&last_name=${lastName}&email=${email}&password=${password}&confirm_password=${confirmPassword}&gender=${gender}&phone_no=${phoneNo}`)
       .then((responseJson)=>{
         console.log(responseJson)
         const msg = responseJson.message

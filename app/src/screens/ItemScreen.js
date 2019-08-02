@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text,ScrollView,TouchableOpacity } from 'react-native';
+import { View, Text,ScrollView,TouchableOpacity,ActivityIndicator } from 'react-native';
 import ItemDetail from '../components/ItemDetail';
 import R from '../R';
+import Api from '../components/Api';
 
 
 export default class ItemScreen extends Component {
@@ -17,17 +18,22 @@ export default class ItemScreen extends Component {
       color:R.color.textInputBorderColor,
       fontFamily: 'gotham_medium' 
     },
-
 })
 
-    state={items:[]}
+    constructor(){
+      super()
+      this.state={
+        items:[],
+      }
+    }
+
+    
     
     componentDidMount(){
       
         categoryId=this.props.navigation.getParam("productCategoryId",1)
-        return fetch(`http://staging.php-dev.in:8844/trainingapp/api/products/getList?product_category_id=${categoryId}`)
-            .then((response)=>response.json())
-            .then((responseJson)=>{
+        Api(`products/getList?product_category_id=${categoryId}`,'GET',null,null)    
+        .then((responseJson)=>{
                 this.setState({
                   items : responseJson.data
                 })    
@@ -39,25 +45,39 @@ export default class ItemScreen extends Component {
 
     renderItems(){
       return(
+        
         this.state.items.map((item)=>
        
           <TouchableOpacity key={item.id} onPress={()=>{
             this.props.navigation.navigate('Detail',{productId:item.id,productName:item.name})
-            }}>  
+            }}>    
            <ItemDetail itemImage={item.product_images} itemName={item.name} itemProducer={item.producer} itemCost={item.cost} itemRating={item.rating} />
            </TouchableOpacity>
-     
+          
         )
+        )      
+    }
+
+
+  render() {
+    
+    if(this.state.items.length==0){
+      return(
+        <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+        <ActivityIndicator size='large' color={R.color.backgroundColorDefault}/>
+        </View>
       )
     }
 
-  render() {
-    console.log(this.state)
     return(
+    
       <ScrollView>
-       
+
         {this.renderItems()}
+        
       </ScrollView>
+     
     )
-  }
+    }
+  
 }

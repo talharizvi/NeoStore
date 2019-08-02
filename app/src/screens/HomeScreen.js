@@ -1,24 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text,Image,ScrollView,FlatList,TouchableOpacity } from 'react-native';
+import { View, Text,Image,ScrollView,FlatList,TouchableOpacity,StatusBar } from 'react-native';
 import R from '../R';
 
 
 
 export default class HomeScreen extends Component {
   
-    static navigationOptions={
-        
-        title:'NeoSTORE',
-        headerStyle:{
-            backgroundColor:R.color.backgroundColorDefault
-        },
-        headerTitleStyle:{
-          fontSize: 20,
-          color:R.color.textInputBorderColor,
-          fontFamily: 'gotham_medium' 
-        },
-    
-    }
 
    
     state={
@@ -28,6 +15,7 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <View style={{flex:1}}>
+        <StatusBar backgroundColor={R.color.backgroundColorDefault}></StatusBar>
         <View style={{flex:2}}>
           <ScrollView horizontal={true} >
             <Image source={R.images.slider_img1} style={{width:393,height:'100%'}}></Image>

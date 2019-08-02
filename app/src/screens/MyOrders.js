@@ -2,21 +2,10 @@ import React,{Component} from 'react';
 import {View,Image,TextInput,Text,TouchableOpacity} from 'react-native';
 import R from '../R';
 import AsyncStorage from '@react-native-community/async-storage';
+import Api from '../components/Api';
 
 export default class MyOrder extends Component{
 
-  static navigationOptions={
-        
-    title:'My Orders',
-    headerStyle:{
-        backgroundColor:R.color.backgroundColorDefault
-    },
-    headerTitleStyle:{
-      fontSize: 20,
-      color:R.color.textInputBorderColor,
-      fontFamily: 'gotham_medium' 
-    },
-}
 
     constructor(props){
       super(props)
@@ -33,13 +22,8 @@ export default class MyOrder extends Component{
     }
 
     getOrderList(){
-      fetch('http://staging.php-dev.in:8844/trainingapp/api/orderList',{
-        method:'GET',
-        headers:{
-          access_token:this.state.accessToken,
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }
-      }).then((response)=>response.json())
+      
+      return Api('orderList','GET',this.state.accessToken,null)
       .then((responseJson)=>{
         this.setState({orderArr:responseJson.data})
         console.log(responseJson)

@@ -3,6 +3,7 @@ import {View,Text} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import R from '../R';
 import CustomButtonRed from '../components/CustomButtonRed';
+import Api from '../components/Api';
 
 export default class AddressList extends Component{
 
@@ -32,26 +33,19 @@ export default class AddressList extends Component{
 
     placeOrder(address){
         console.log(address)
-        fetch('http://staging.php-dev.in:8844/trainingapp/api/order',{
-            method:'POST',
-            headers:{
-                access_token:this.state.accessToken,
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body:
-                `address=${address}`
-            
-        })
-        .then((response)=>response.json())
+        
+        return Api('order','POST',this.state.accessToken,`address=${address}`)
         .then((responseJson)=>{
             console.log(responseJson)
             if(responseJson.status==200){
-                alert(responseJson.message)
+               alert(responseJson.message)
                
                setTimeout(() => {
                 this.props.navigation.navigate('Home')
             }, 3000);
             }
+        }).catch((error)=>{
+            console.error(error)
         })
     }
 

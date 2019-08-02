@@ -16,22 +16,65 @@ import EditProfile from "./app/src/screens/EditProfile";
 import AddressList from "./app/src/screens/AddressList";
 import OrderDetail from "./app/src/screens/OrderDetail";
 import ChangePasswordScreen from "./app/src/screens/ChangePasswordScreen";
-
+import R from "./app/src/R";
 
 const MainNavigator= createStackNavigator({
-    Home:{screen:HomeScreen},
-    Address:{screen:AddressScreen}, 
+    Home:{
+      screen:HomeScreen,
+      navigationOptions:{
+        title:'NeoStore'
+      }
+      
+    },
+    Address:{
+      screen:AddressScreen,
+      navigationOptions:{
+        title:'Add Address'
+      }
+    }, 
     AddressList:{screen:AddressList},
-    MyCart:{screen:CartScreen},
-    EditProfile:{screen:EditProfile},
+    MyCart:{
+      screen:CartScreen,
+      navigationOptions:{
+        title:'My Cart'
+      }
+    },
+    EditProfile:{
+      screen:EditProfile,
+      navigationOptions:{
+        title:'EditProfile',
+      }
+    },
     Item:{screen:ItemScreen},
     Detail:{screen:DetailScreen},
     StoreLocator:{screen:StoreLocator},
-    MyAccount:{screen:MyAccount},
-    MyOrder:{screen:MyOrder},
+    MyAccount:{screen:MyAccount,
+    navigationOptions:{
+      title:'My Account'
+    }},
+    MyOrder:{
+      screen:MyOrder,
+      navigationOptions:{
+        title:'My Orders',
+      }
+    },
     OrderDetail:{screen:OrderDetail},
-    ChangePassword:{screen:ChangePasswordScreen}
-},{headerLayoutPreset: 'center'}
+    ChangePassword:{
+      screen:ChangePasswordScreen,
+      navigationOptions:{
+        title:'ChangePassword',
+      }
+    }
+},{headerLayoutPreset: 'center',defaultNavigationOptions:{
+        headerStyle:{
+            backgroundColor:R.color.backgroundColorDefault
+        },
+        headerTitleStyle:{
+          fontSize: 20,
+          color:R.color.textInputBorderColor,
+          fontFamily: 'gotham_medium' 
+        },
+}}
 );
 
 

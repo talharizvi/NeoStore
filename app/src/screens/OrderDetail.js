@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {View,Text,Image} from 'react-native';
 import R from '../R';
 import AsyncStorage from '@react-native-community/async-storage';
+import Api from '../components/Api';
 
 export default class OrderDetail extends Component{
 
@@ -36,13 +37,8 @@ export default class OrderDetail extends Component{
 
     getOrderDetail(){
         const id = this.props.navigation.getParam('orderId',1)
-        fetch(`http://staging.php-dev.in:8844/trainingapp/api/orderDetail?order_id=${id}`,{
-            method:'GET',
-            headers:{
-              access_token:this.state.accessToken,
-              'Content-Type': 'application/x-www-form-urlencoded',
-            }
-        }).then((response)=>response.json())
+      
+        return Api(`orderDetail?order_id=${id}`,'GET',this.state.accessToken,null)
         .then((responseJson)=>{
             console.log(responseJson.data)
             console.log(responseJson.data.order_details)

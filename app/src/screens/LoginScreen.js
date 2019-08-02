@@ -5,6 +5,7 @@ import style from '../Styles';
 import CustomButton from '../components/CustomButton';
 import CustomTextInput from '../components/CustomTextInput'
 import AsyncStorage from '@react-native-community/async-storage';
+import Api from '../components/Api';
 
 export default class LoginScreen extends Component{
 
@@ -25,17 +26,20 @@ export default class LoginScreen extends Component{
      
       
     loginUser(userName,password){
-        fetch('http://staging.php-dev.in:8844/trainingapp/api/users/login',{
-            method:'POST',
-            headers:{
-                'Content-Type': 'application/x-www-form-urlencoded',
-              },
-            body:`email=${userName}&password=${password}`  
-        }).then((response)=>response.json())
+       
+        // fetch('http://staging.php-dev.in:8844/trainingapp/api/users/login',{
+        //     method:'POST',
+        //     headers:{
+        //         'Content-Type': 'application/x-www-form-urlencoded',
+        //       },
+        //     body:`email=${userName}&password=${password}`  
+        // }).then((response)=>response.json())
+        return Api('users/login','POST',null,`email=${userName}&password=${password}`)
         .then((responseJson)=>{
             console.log(responseJson)
            
             let status = responseJson.status
+            this.setState({showIndicator: !this.state.showIndicator})
                 if(status==200){
                     let accessToken = responseJson.data.access_token
                     let userName = responseJson.data.username
@@ -44,9 +48,15 @@ export default class LoginScreen extends Component{
                     this.multiSet(userName,userEmail,accessToken)
                     this.props.navigation.navigate("HomeStack")
                    
+                }else if(status==401){
+                    setTimeout(()=>{
+                        this.setState({showIndicator: false})
+                    },1000)
+                    alert(responseJson.message)
                 }
                 console.log(accessToken)
-            
+               
+                
           
         })
     }
@@ -83,7 +93,6 @@ export default class LoginScreen extends Component{
             <CustomButton title='LOGIN' onPress={()=>{
                
                 this.loginUser(this.state.userName,this.state.password)
-                this.setState({showIndicator: !this.state.showIndicator})
                 }}/>
 
 

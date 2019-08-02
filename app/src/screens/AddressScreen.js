@@ -8,18 +8,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 export default class AddressScreen extends Component{
     
-    static navigationOptions={
-        
-        title:'Add Address',
-        headerStyle:{
-            backgroundColor:R.color.backgroundColorDefault
-        },
-        headerTitleStyle:{
-            fontSize: 20,
-            color:R.color.textInputBorderColor,
-            fontFamily: 'gotham_medium' 
-          },
-    }
+   
 
     state=[
         address='',

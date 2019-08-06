@@ -32,7 +32,7 @@ export default class ItemScreen extends Component {
     componentDidMount(){
       
         categoryId=this.props.navigation.getParam("productCategoryId",1)
-        Api(`products/getList?product_category_id=${categoryId}`,'GET',null,null)    
+        Api(`products/getList?product_category_id=${categoryId}`,'GET',null)    
         .then((responseJson)=>{
                 this.setState({
                   items : responseJson.data
@@ -48,7 +48,7 @@ export default class ItemScreen extends Component {
         
         this.state.items.map((item)=>
        
-          <TouchableOpacity key={item.id} onPress={()=>{
+          <TouchableOpacity key={item.name} onPress={()=>{
             this.props.navigation.navigate('Detail',{productId:item.id,productName:item.name})
             }}>    
            <ItemDetail itemImage={item.product_images} itemName={item.name} itemProducer={item.producer} itemCost={item.cost} itemRating={item.rating} />
@@ -71,7 +71,8 @@ export default class ItemScreen extends Component {
 
     return(
     
-      <ScrollView>
+      <ScrollView 
+      >
 
         {this.renderItems()}
         

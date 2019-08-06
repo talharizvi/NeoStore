@@ -1,28 +1,60 @@
 import React, { Component } from 'react';
-import { View, Text,Image,ScrollView,FlatList,TouchableOpacity,StatusBar } from 'react-native';
+import { View, Text,Image,ScrollView,FlatList,TouchableOpacity,StatusBar,YellowBox } from 'react-native';
 import R from '../R';
-
+import HamburgerIcon from '../components/HamburgerIcon';
+import {IndicatorViewPager, PagerDotIndicator} from 'rn-viewpager';
 
 
 export default class HomeScreen extends Component {
   
 
-   
+  static navigationOptions=({navigation})=>({
+    title:'NeoStore',
+    headerStyle:{
+      backgroundColor:R.color.backgroundColorDefault
+  },
+    headerLeft:
+     <HamburgerIcon navigationProps={navigation} />
+    
+  }) 
+
     state={
       productCategoryId:1
     }
 
+    renderDotIndicator() {
+      return <PagerDotIndicator pageCount={4} />;
+  }
+
   render() {
+    YellowBox.ignoreWarnings(['Warning: componentWillUpdate']);
     return (
       <View style={{flex:1}}>
         <StatusBar backgroundColor={R.color.backgroundColorDefault}></StatusBar>
         <View style={{flex:2}}>
-          <ScrollView horizontal={true} >
+          {/* <ScrollView horizontal={true} >
             <Image source={R.images.slider_img1} style={{width:393,height:'100%'}}></Image>
             <Image source={R.images.slider_img2} style={{width:393,height:'100%'}}></Image>
             <Image source={R.images.slider_img3} style={{width:393,height:'100%'}}></Image>
             <Image source={R.images.slider_img4} style={{width:393,height:'100%'}}></Image>
-          </ScrollView>
+          </ScrollView> */}
+          <IndicatorViewPager
+                     style={{height:260}}
+                    indicator={this.renderDotIndicator()}
+          >
+            <View>
+            <Image source={R.images.slider_img1} style={{width:'100%',height:'100%'}}></Image>
+            </View>
+            <View>
+            <Image source={R.images.slider_img2} style={{width:'100%',height:'100%'}}></Image>
+            </View>
+            <View>
+            <Image source={R.images.slider_img3} style={{width:'100%',height:'100%'}}></Image>
+            </View>
+            <View>
+            <Image source={R.images.slider_img4} style={{width:'100%',height:'100%'}}></Image>
+            </View>
+        </IndicatorViewPager>
         </View>
         
         <View style={{flex:3,justifyContent:'center',alignItems:'center'}}>
@@ -37,6 +69,7 @@ export default class HomeScreen extends Component {
               </TouchableOpacity>
              </View>}
              numColumns={2}
+             keyExtractor={(item,index)=>index.toString()}
           />
 
        </View>

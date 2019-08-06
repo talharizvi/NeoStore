@@ -22,23 +22,14 @@ export default class ChangePasswordScreen extends Component{
     
 
     componentDidMount(){
-        this.getAccessTokenData()
+      
     }
 
-    getAccessTokenData=async()=>{
-        try{
-            let accessToken = await AsyncStorage.getItem('access_token')
-            this.setState({accessToken:accessToken})
-            console.log(accessToken)
-               
-          }catch(error){
-            console.log(error)
-          }
-    }
+    
 
     changePassword(oldPassword,newPassword,confirmPassword){
       
-        return Api('users/change','POST',this.state.accessToken,`old_password=${oldPassword}&password=${newPassword}&confirm_password=${confirmPassword}`)
+        return Api('users/change','POST',`old_password=${oldPassword}&password=${newPassword}&confirm_password=${confirmPassword}`)
         .then((responseJson)=>{
             console.log(responseJson)
             if(responseJson.status==200){

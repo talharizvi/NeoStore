@@ -4,7 +4,6 @@ import R from '../R';
 import CustomText from '../components/CustomText';
 import CustomButton from '../components/CustomButton';
 import style from '../Styles';
-import AsyncStorage from '@react-native-community/async-storage';
 import Api from '../components/Api';
 
 export default class MyAccount extends Component{
@@ -18,34 +17,20 @@ export default class MyAccount extends Component{
   }
 
   componentDidMount(){
-    this.getAccessTokenData()
+   this.getUserData() 
   }
 
   getUserData(){
-  
     const endPoint='users/getUserData';
-    return Api(endPoint,'GET',this.state.accessToken,null).then((responseJson)=>{
+    return Api(endPoint,'GET',null).then((responseJson)=>{
       console.log(responseJson)
       this.setState({dataSource:responseJson.data.user_data})
     })
-    
-  
-    
-    
   }
 
-  getAccessTokenData=async()=>{
-    try{
-        let accessToken = await AsyncStorage.getItem('access_token')
-        this.setState({accessToken:accessToken})
-       
-        this.getUserData()        
-      }catch(error){
-        console.log(error)
-      }
-}
 
     render(){
+      console.log(this.state)
         return(
         <View style={{flex:1,backgroundColor:R.color.backgroundColorDefault,alignItems: "center"}}>
           <View style={{alignItems:'center', paddingTop:30}}>

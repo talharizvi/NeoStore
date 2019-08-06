@@ -16,28 +16,16 @@ export default class EditProfile extends Component{
       email:'',
       phoneNo:'',
       dob:'',
-      accessToken:''
+      accessToken:'',
+      profilePic:null
     }
   }
 
-getAccessTokenData=async()=>{
-  try{
-      let accessToken = await AsyncStorage.getItem('access_token')
-      this.setState({accessToken:accessToken})
-      console.log(accessToken)
-         
-    }catch(error){
-      console.log(error)
-    }
-}
-
-componentDidMount(){
-  this.getAccessTokenData()
-}
 
   updateAccount(firstName,lastName,email,dob,profilePic,phoneNo){
     console.log("called update")
-    return Api('users/update','POST',this.state.accessToken,`first_name=${firstName}&last_name=${lastName}&email=${email}&dob=${dob}&profile_pic=${profilePic}&phone_no=${phoneNo}`)
+    console.log("fName:"+firstName+"lName:"+lastName+"email:"+email+"dob"+dob+"propfile"+profilePic+"phone"+phoneNo)
+    return Api('users/update','POST',`first_name=${firstName}&last_name=${lastName}&email=${email}&dob=${dob}&profile_pic=${profilePic}&phone_no=${phoneNo}`)
     .then((responseJson)=>{
       alert(responseJson.message)
     })
@@ -56,7 +44,7 @@ componentDidMount(){
             <CustomTextInput sourceImage={R.images.dob_icon} placeholdeValue='DOB' onChangeText={(dob)=>this.setState({dob})}></CustomTextInput>
             <CustomButton title='SUBMIT' onPress={()=>{
               this.updateAccount(this.state.firstName,this.state.lastName,this.state.email,
-                this.state.dob,this.state.profilePic,this.state.phoneNo)
+                this.state.dob,null,this.state.phoneNo)
             }        
               }></CustomButton>
        </View>)

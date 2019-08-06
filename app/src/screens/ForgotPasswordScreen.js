@@ -27,7 +27,7 @@ export default class ForgotPasswordScreen extends Component {
   }
 
   forgotPassword(email){
-    return Api('users/forgot','POST',null,`email=${email}`)
+    return Api('users/forgot','POST',`email=${email}`)
     .then((responseJson)=>{
       console.log(responseJson)
     })

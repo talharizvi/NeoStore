@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {View,Text,Image,FlatList,Button,Picker,TouchableOpacity} from 'react-native';
 import R from '../R';
 import CustomButtonRed from '../components/CustomButtonRed';
-import AsyncStorage from '@react-native-community/async-storage';
 import Api from '../components/Api';
 
 
@@ -25,29 +24,12 @@ export default class CartScreen extends Component{
 
 
     componentDidMount(){
-        this.getAccessTokenData()
-    }
-
-    getAccessTokenData=async()=>{
-        try{
-            let accessToken = await AsyncStorage.getItem('access_token')
-            this.setState({accessToken:accessToken})
-            console.log(accessToken)
-            this.getCartItemsFromApi()        
-          }catch(error){
-            console.log(error)
-          }
+        this.getCartItemsFromApi() 
     }
 
     getCartItemsFromApi(){
-        // fetch('http://staging.php-dev.in:8844/trainingapp/api/cart',{
-        //     method:'GET',
-        //     headers:{
-        //         access_token:this.state.accessToken,
-        //         'Content-Type': 'application/x-www-form-urlencoded',
-        //     }
-        // }).then((response)=>response.json())
-        return Api('cart','GET',this.state.accessToken,null)
+       
+        return Api('cart','GET',null)
         .then((responseJson)=>{
             console.log(responseJson)
             this.setState({itemList:responseJson.data,totalAmount:responseJson.total})
@@ -60,7 +42,7 @@ export default class CartScreen extends Component{
         console.log("productId:"+productId)
         console.log("quantity:"+quantity)
        
-        return Api('editCart','POST',this.state.accessToken,`product_id=${productId}&quantity=${quantity}`)
+        return Api('editCart','POST',`product_id=${productId}&quantity=${quantity}`)
         .then((responseJson)=>{
             console.log(responseJson)
             this.getCartItemsFromApi()
@@ -70,14 +52,7 @@ export default class CartScreen extends Component{
     }
 
     deleteItem(productId){
-        // fetch('http://staging.php-dev.in:8844/trainingapp/api/deleteCart',{
-        //     method:'POST',
-        //     headers:{   
-        //         access_token:this.state.accessToken,
-        //         'Content-Type': 'application/x-www-form-urlencoded',
-        //     },
-        //     body: `product_id=${productId}`
-        // }).then((response)=>response.json())
+        
         return Api('deleteCart','POST',this.state.accessToken,`product_id=${productId}`)
         .then((responseJson)=>{
             console.log(responseJson)

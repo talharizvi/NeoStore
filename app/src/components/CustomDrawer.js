@@ -3,12 +3,18 @@ import {View,Text,FlatList,TouchableOpacity,Image} from 'react-native';
 import R from '../R';
 import style from "../Styles";
 import AsyncStorage from '@react-native-community/async-storage';
+import Api from './Api';
 
 export default class CustomDrawer extends Component{
 
    state={
        userName:'Default',
-       userEmail:"default@gmail.com"
+       userEmail:"default@gmail.com",
+       cartItemQuantity:0
+   }
+
+   componentDidMount(){
+    this.getCartCount()
    }
 
       displayData=async()=>{
@@ -24,7 +30,18 @@ export default class CustomDrawer extends Component{
         }catch(error){
           console.log(error)
         }
-  }
+    }
+
+    getCartCount(){
+        return Api('cart','GET',null)
+        .then((responseJson)=>{
+            console.log(responseJson)
+            this.setState({cartItemQuantity:responseJson.data.length})
+        }).catch((error)=>{
+            console.log(error)
+        })
+    }
+
     
   clearTokenData=async()=>{
       
@@ -52,7 +69,7 @@ export default class CustomDrawer extends Component{
 
                 <FlatList 
             
-                   data={[{image:R.images.shopping_cart,title:"My Cart",screen:"MyCart"},
+                   data={[{image:R.images.shopping_cart,title:"My Cart",screen:"MyCart",itemQuantity:this.state.cartItemQuantity},
                             {image:R.images.tables_icon,title:"Tables",screen:"Item",itemId:1,itemType:'Tables'},
                             {image:R.images.sofa_icon,title:"Sofas",screen:"Item",itemId:3,itemType:'Sofas'},
                             {image:R.images.chair_icon,title:"Chairs",screen:"Item",itemId:2,itemType:'Chairs'},
@@ -73,7 +90,8 @@ export default class CustomDrawer extends Component{
                     <View style={{flexDirection:"row",alignItems:'center'}}>
                         
                            <Image source={item.image} style={{width:30,height:30,marginLeft:10}}/>
-                           <Text style={{color:R.color.textInputBorderColor,fontSize:20,padding:10,marginLeft:10,fontFamily:'gotham_medium'}}>{item.title}</Text> 
+                           <Text style={{color:R.color.textInputBorderColor,fontSize:20,padding:10,marginLeft:10,fontFamily:'gotham_medium'}}>{item.title}</Text>
+                           <Text style={{color:R.color.textInputBorderColor,marginLeft:80,fontFamily:'gotham_medium'}}>{item.itemQuantity}</Text> 
                      </View>
                      </TouchableOpacity>
                      }

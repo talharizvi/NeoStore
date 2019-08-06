@@ -16,25 +16,14 @@ export default class AddressList extends Component{
             addressObj:'',
             accessToken:''
         }
-        this.getAccessTokenData()
+    
         this.getAddress()
     }
-    
-    getAccessTokenData=async()=>{
-        try{
-            let accessToken = await AsyncStorage.getItem('access_token')
-            this.setState({accessToken:accessToken})
-            console.log(accessToken)        
-          }catch(error){
-            console.log(error)
-          }
-    }
-   
-
+  
     placeOrder(address){
         console.log(address)
         
-        return Api('order','POST',this.state.accessToken,`address=${address}`)
+        return Api('order','POST',`address=${address}`)
         .then((responseJson)=>{
             console.log(responseJson)
             if(responseJson.status==200){

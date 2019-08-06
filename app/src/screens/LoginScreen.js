@@ -34,7 +34,7 @@ export default class LoginScreen extends Component{
         //       },
         //     body:`email=${userName}&password=${password}`  
         // }).then((response)=>response.json())
-        return Api('users/login','POST',null,`email=${userName}&password=${password}`)
+        return Api('users/login','POST',`email=${userName}&password=${password}`)
         .then((responseJson)=>{
             console.log(responseJson)
            

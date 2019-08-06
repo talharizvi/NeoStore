@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {View,Text,Image} from 'react-native';
 import R from '../R';
-import AsyncStorage from '@react-native-community/async-storage';
 import Api from '../components/Api';
 
 export default class OrderDetail extends Component{
@@ -29,16 +28,13 @@ export default class OrderDetail extends Component{
     
 
     componentDidMount(){
-
-        this.getAccessTokenData()
-        
-        
+        this.getOrderDetail()
     }
 
     getOrderDetail(){
         const id = this.props.navigation.getParam('orderId',1)
       
-        return Api(`orderDetail?order_id=${id}`,'GET',this.state.accessToken,null)
+        return Api(`orderDetail?order_id=${id}`,'GET',null)
         .then((responseJson)=>{
             console.log(responseJson.data)
             console.log(responseJson.data.order_details)
@@ -47,16 +43,7 @@ export default class OrderDetail extends Component{
           })
     }
 
-    getAccessTokenData=async()=>{
-        try{
-            let accessToken = await AsyncStorage.getItem('access_token')
-            this.setState({accessToken:accessToken})
-            this.getOrderDetail()
-            console.log(accessToken)        
-          }catch(error){
-            console.log(error)
-          }
-      }
+    
 
     renderItems(){
         console.log("itemArray"+this.state.itemArr)

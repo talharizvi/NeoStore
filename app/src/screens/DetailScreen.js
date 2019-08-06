@@ -37,13 +37,11 @@ export default class DetailScreen extends Component {
     
     componentDidMount(){
 
-        this.getAccessTokenData()
-        const id = this.props.navigation.getParam('productId',1)
-         
+        const id = this.props.navigation.getParam('productId',1)         
         console.log(`component id :${id}`)
         // fetch(`http://staging.php-dev.in:8844/trainingapp/api/products/getDetail?product_id=${id}`)
         // .then((response)=>response.json())
-        Api(`products/getDetail?product_id=${id}`,'GET',null,null)
+        Api(`products/getDetail?product_id=${id}`,'GET',null)
         .then((responseJson)=>{
             console.log(responseJson)
             this.setState({
@@ -78,33 +76,12 @@ export default class DetailScreen extends Component {
     setModelItemRatingVisible(visible){
         this.setState({modelItemRatingVisible:visible});
     }
-    
-    getAccessTokenData=async()=>{
-      try{
-          let accessToken = await AsyncStorage.getItem('access_token')
-          this.setState({accessToken:accessToken})
-          console.log(accessToken)
-             
-        }catch(error){
-          console.log(error)
-        }
-  }
+  
     
     addItemToCart(productId,quantity){
-      
-      fetch('http://staging.php-dev.in:8844/trainingapp/api/addToCart',{
-        method:'POST',
-        headers:{
-          access_token:this.state.accessToken,
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body:
-          `product_id=${productId}&quantity=${quantity}`
-      })
-      .then((response)=>response.json())
+      Api('addToCart','POST',`product_id=${productId}&quantity=${quantity}`)
       .then((responseJson)=>{
         console.log(responseJson)
-      
       })
     }
 
@@ -257,11 +234,11 @@ function renderRating(count){
   
   return(
       elements.map((item)=>{
-          return(
+          // return(
           <View >
           {item}
           </View>
-              )
+              // )
       }) 
       
   )

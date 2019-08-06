@@ -3,8 +3,6 @@ import { View, Text, Image,TouchableOpacity} from 'react-native';
 import R from '../R';
 import CustomTextInput from '../components/CustomTextInput';
 import CustonButton from '../components/CustomButton';
-
-import AsyncStorage from '@react-native-community/async-storage';
 import Api from '../components/Api';
 
 
@@ -39,7 +37,7 @@ export default class RegisterScreen extends Component {
      
     registerUser(firstName,lastName,email,password,confirmPassword,gender,phoneNo){
      
-      return Api('users/register','POST',null,`first_name=${firstName}&last_name=${lastName}&email=${email}&password=${password}&confirm_password=${confirmPassword}&gender=${gender}&phone_no=${phoneNo}`)
+      return Api('users/register','POST',`first_name=${firstName}&last_name=${lastName}&email=${email}&password=${password}&confirm_password=${confirmPassword}&gender=${gender}&phone_no=${phoneNo}`)
       .then((responseJson)=>{
         console.log(responseJson)
         const msg = responseJson.message

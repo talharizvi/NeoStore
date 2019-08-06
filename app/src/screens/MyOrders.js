@@ -18,28 +18,29 @@ export default class MyOrder extends Component{
     
 
     componentDidMount(){
-      this.getAccessTokenData()
+     
+      this.getOrderList()
     }
 
     getOrderList(){
       
-      return Api('orderList','GET',this.state.accessToken,null)
+      return Api('orderList','GET',null)
       .then((responseJson)=>{
         this.setState({orderArr:responseJson.data})
         console.log(responseJson)
       })
     }
 
-    getAccessTokenData=async()=>{
-      try{
-          let accessToken = await AsyncStorage.getItem('access_token')
-          this.setState({accessToken:accessToken})
-          this.getOrderList()
-          console.log(accessToken)        
-        }catch(error){
-          console.log(error)
-        }
-    }
+    // getAccessTokenData=async()=>{
+    //   try{
+    //       let accessToken = await AsyncStorage.getItem('access_token')
+    //       this.setState({accessToken:accessToken})
+    //       this.getOrderList()
+    //       console.log(accessToken)        
+    //     }catch(error){
+    //       console.log(error)
+    //     }
+    // }
 
     renderOrderList(){
       return(

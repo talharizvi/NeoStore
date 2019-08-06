@@ -10,7 +10,7 @@ import R from '../R';
 const ItemDetail=({itemImage,itemName,itemProducer,itemCost,itemRating})=>{
 
     return(   
-    <View  style={{flexDirection: 'row',margin:10}}>
+    <View  style={{flexDirection: 'row',margin:10}} >
         <View>
             <Image source={{uri:itemImage}} style={{height:80,width:80}}></Image>
         </View>
@@ -46,11 +46,11 @@ const ItemDetail=({itemImage,itemName,itemProducer,itemCost,itemRating})=>{
         
         return(
             elements.map((item)=>{
-                return(
+                // return(
                 <View >
                 {item}
                 </View>
-                    )
+                    // )
             }) 
             
         )

@@ -18,13 +18,11 @@ import OrderDetail from "./app/src/screens/OrderDetail";
 import ChangePasswordScreen from "./app/src/screens/ChangePasswordScreen";
 import R from "./app/src/R";
 
+
 const MainNavigator= createStackNavigator({
+  
     Home:{
-      screen:HomeScreen,
-      navigationOptions:{
-        title:'NeoStore'
-      }
-      
+      screen:HomeScreen, 
     },
     Address:{
       screen:AddressScreen,

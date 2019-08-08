@@ -53,7 +53,7 @@ export default class CartScreen extends Component{
 
     deleteItem(productId){
         
-        return Api('deleteCart','POST',this.state.accessToken,`product_id=${productId}`)
+        return Api('deleteCart','POST',`product_id=${productId}`)
         .then((responseJson)=>{
             console.log(responseJson)
             this.getCartItemsFromApi()

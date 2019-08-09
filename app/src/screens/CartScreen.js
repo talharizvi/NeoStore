@@ -109,8 +109,9 @@ export default class CartScreen extends Component{
                         </View>
 
                             <View>
-                                <Text style={{fontFamily:"gotham_medium"}}>{item.product.name}</Text>
-                                <Text style={{fontFamily:"gotham_medium"}}>{item.product.product_category}</Text>
+                            {/* style={{fontFamily:"gotham_medium"}} */}
+                                <Text >{item.product.name}</Text>
+                                <Text >{item.product.product_category}</Text>
                     
                                  {this.renderPickerData(item.product_id,index)}
                             </View>
@@ -120,7 +121,8 @@ export default class CartScreen extends Component{
                                 }}>
                                     <Image source={R.images.delete} style={{width:50,height:50}}></Image>    
                                 </TouchableOpacity>
-                                <Text style={{fontFamily:"gotham_medium"}}>Rs{item.product.sub_total}</Text>
+                                {/* style={{fontFamily:"gotham_medium"}} */}
+                                <Text >Rs{item.product.sub_total}</Text>
                             </View> 
                         
                     </View>
@@ -129,8 +131,10 @@ export default class CartScreen extends Component{
 
             </FlatList>
             <View style={{flexDirection:'row',justifyContent:'space-between',margin:10}}>
-            <Text style={{fontFamily:"gotham_bold"}}>Total</Text>
-            <Text style={{color:R.color.backgroundColorDefault,fontFamily:"gotham_bold"}}>Rs {this.state.totalAmount}</Text>
+            {/* style={{fontFamily:"gotham_bold"}} */}
+            <Text >Total</Text>
+            {/* fontFamily:"gotham_bold" */}
+            <Text style={{color:R.color.backgroundColorDefault,}}>Rs {this.state.totalAmount}</Text>
             </View>
             
             <CustomButtonRed title="Order Now" onPress={()=>{

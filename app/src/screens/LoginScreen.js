@@ -95,11 +95,12 @@ export default class LoginScreen extends Component{
                 this.loginUser(this.state.userName,this.state.password)
                 }}/>
 
-
-            <Text style={{marginTop:10,color:R.color.textInputBorderColor,fontSize:20,fontFamily:"gotham_book"}} onPress={()=>{this.props.navigation.navigate('ForgotPassWord')}}>Forgot Password?</Text>
+{/* fontFamily:"gotham_book" */}
+            <Text style={{marginTop:10,color:R.color.textInputBorderColor,fontSize:20,}} onPress={()=>{this.props.navigation.navigate('ForgotPassWord')}}>Forgot Password?</Text>
         {this.state.showIndicator && (<ActivityIndicator size='large' color={R.color.textInputBorderColor}/>)}
             <View style={{flex:1 ,flexDirection:'row',alignItems:'center',justifyContent:'flex-end',marginTop:140}}>
-                <Text style={{color:R.color.textInputBorderColor,fontSize:20,fontFamily:"gotham_book"}} onPress={()=>{
+            {/* fontFamily:"gotham_book" */}
+                <Text style={{color:R.color.textInputBorderColor,fontSize:20,}} onPress={()=>{
                     this.props.navigation.navigate('Register')
                 }}
                 >DONT HAVE Account?</Text>

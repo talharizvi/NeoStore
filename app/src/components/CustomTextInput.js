@@ -8,8 +8,8 @@ const CustomTextInput=({sourceImage,placeholdeValue,onChangeText})=>{
     <View style={style.textInputStyle}>
          <Image style={{justifyContent:'center',marginHorizontal:10} } source={sourceImage}
          />
-
-         <TextInput style ={{flex:1,fontSize:30,color:R.color.textInputBorderColor,fontFamily:"gotham_book"}} underlineColorAndroid={"transparent"} placeholderTextColor={R.color.textInputBorderColor} placeholder={placeholdeValue}
+{/* fontFamily:"gotham_book" */}
+         <TextInput style ={{flex:1,fontSize:30,color:R.color.textInputBorderColor,}} underlineColorAndroid={"transparent"} placeholderTextColor={R.color.textInputBorderColor} placeholder={placeholdeValue}
             onChangeText={onChangeText} 
          >
 

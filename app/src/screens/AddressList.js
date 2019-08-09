@@ -63,11 +63,12 @@ export default class AddressList extends Component{
             <View>
                 
                 <View style={{margin:5,borderColor:R.color.blackColor,borderWidth:2,}}>
-                    <Text style={{font_family:"gotham_book"}}>{this.state.addressObj.address}</Text>
-                    <Text style={{font_family:"gotham_book"}}>{this.state.addressObj.city}</Text>
-                    <View style={{flexDirection:'row',font_family:"gotham_book"}}> 
-                    <Text style={{marginRight:10,font_family:"gotham_book"}}>{this.state.addressObj.zipCode}</Text>
-                    <Text style={{font_family:"gotham_book"}}>{this.state.addressObj.country}</Text>
+                {/* style={{font_family:"gotham_book"}} */}
+                    <Text >{this.state.addressObj.address}</Text>
+                    <Text >{this.state.addressObj.city}</Text>
+                    <View style={{flexDirection:'row'}}> 
+                    <Text style={{marginRight:10}}>{this.state.addressObj.zipCode}</Text>
+                    <Text >{this.state.addressObj.country}</Text>
                     </View>
                 </View>
                 

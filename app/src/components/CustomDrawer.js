@@ -62,9 +62,9 @@ export default class CustomDrawer extends Component{
             <View style={{flex:1,backgroundColor:R.color.drawerBackground}}>
                 <View style={{alignItems:'center', paddingTop:30,}}>
                     <Image source={{uri:'https://facebook.github.io/react-native/docs/assets/favicon.png'}} style={style.roundImageStyle}></Image>
-                   
-                    <Text style={{color:R.color.textInputBorderColor,fontSize:20,fontFamily:'gotham_medium'}}>{this.state.userName}</Text>  
-                    <Text style={{color:R.color.textInputBorderColor,fontFamily:'gotham_medium'}}>{this.state.userEmail}</Text>
+                    {/* fontFamily:'gotham_medium' */}
+                    <Text style={{color:R.color.textInputBorderColor,fontSize:20,}}>{this.state.userName}</Text>  
+                    <Text style={{color:R.color.textInputBorderColor,}}>{this.state.userEmail}</Text>
                 </View>
 
                 <FlatList 
@@ -90,8 +90,9 @@ export default class CustomDrawer extends Component{
                     <View style={{flexDirection:"row",alignItems:'center'}}>
                         
                            <Image source={item.image} style={{width:30,height:30,marginLeft:10}}/>
-                           <Text style={{color:R.color.textInputBorderColor,fontSize:20,padding:10,marginLeft:10,fontFamily:'gotham_medium'}}>{item.title}</Text>
-                           <Text style={{color:R.color.textInputBorderColor,marginLeft:80,fontFamily:'gotham_medium'}}>{item.itemQuantity}</Text> 
+                           {/* fontFamily:'gotham_medium' */}
+                           <Text style={{color:R.color.textInputBorderColor,fontSize:20,padding:10,marginLeft:10,}}>{item.title}</Text>
+                           <Text style={{color:R.color.textInputBorderColor,marginLeft:80,}}>{item.itemQuantity}</Text> 
                      </View>
                      </TouchableOpacity>
                      }

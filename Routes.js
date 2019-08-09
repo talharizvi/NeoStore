@@ -70,7 +70,7 @@ const MainNavigator= createStackNavigator({
         headerTitleStyle:{
           fontSize: 20,
           color:R.color.textInputBorderColor,
-          fontFamily: 'gotham_medium' 
+          //fontFamily: 'gotham_medium' 
         },
 }}
 );

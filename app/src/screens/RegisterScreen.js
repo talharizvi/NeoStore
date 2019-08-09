@@ -18,7 +18,7 @@ export default class RegisterScreen extends Component {
         headerTitleStyle:{
           fontSize: 20,
           color:R.color.textInputBorderColor,
-          fontFamily: 'gotham_medium' 
+          // fontFamily: 'gotham_medium' 
         },
 
     }
@@ -58,7 +58,8 @@ export default class RegisterScreen extends Component {
         <CustomTextInput sourceImage={R.images.password_icon} placeholdeValue='Password' onChangeText={(password)=>this.setState({password})}></CustomTextInput>
         <CustomTextInput sourceImage={R.images.username_icon} placeholdeValue='Confirm Password' onChangeText={(confirmPassword)=>this.setState({confirmPassword})}></CustomTextInput>
         <View style={{flexDirection:'row'}}>
-            <Text style={{fontSize:25,color:R.color.textInputBorderColor,fontFamily:"gotham_book"}} >Gender</Text>
+        {/* fontFamily:"gotham_book" */}
+            <Text style={{fontSize:25,color:R.color.textInputBorderColor,}} >Gender</Text>
             <View style={{flexDirection:'row',alignItems:'center',marginLeft:20,marginRight:20}}>
               <TouchableOpacity onPress={()=>{
                 if(this.state.isSelected){
@@ -70,7 +71,8 @@ export default class RegisterScreen extends Component {
               }}>
                 <Image source={imageSourceMale} style={{width:20,height:20,marginRight:5}}></Image>
               </TouchableOpacity>
-              <Text style={{fontSize:20,color:R.color.textInputBorderColor,fontFamily:"gotham_book"}}>Male</Text>
+              {/* fontFamily:"gotham_book" */}
+              <Text style={{fontSize:20,color:R.color.textInputBorderColor,}}>Male</Text>
             </View>
             <View style={{flexDirection:'row',alignItems:'center'}}>
               <TouchableOpacity onPress={()=>{
@@ -82,7 +84,8 @@ export default class RegisterScreen extends Component {
               }}>
                 <Image source={imageSourceFemale} style={{width:20,height:20,marginRight:5}}></Image>
                 </TouchableOpacity>
-                <Text style={{fontSize:20,color:R.color.textInputBorderColor,fontFamily:"gotham_book"}}>Female</Text>
+                {/* fontFamily:"gotham_book" */}
+                <Text style={{fontSize:20,color:R.color.textInputBorderColor,}}>Female</Text>
               
             </View>
 
@@ -98,7 +101,8 @@ export default class RegisterScreen extends Component {
             }}>
               <Image source={imageSourceCheckBox}></Image>
             </TouchableOpacity>
-              <Text style={{fontSize:20,marginLeft:20,color:R.color.textInputBorderColor,fontFamily:"gotham_book"}}>I agree the Terms & Conditions</Text>
+            {/* fontFamily:"gotham_book" */}
+              <Text style={{fontSize:20,marginLeft:20,color:R.color.textInputBorderColor,}}>I agree the Terms & Conditions</Text>
         </View>
         <CustonButton title='REGISTER' onPress={()=>{
             

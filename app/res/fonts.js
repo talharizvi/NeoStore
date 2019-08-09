@@ -1,8 +1,9 @@
 
 const fonts={
-    GothamBold:"GothamBold",
-    GothamBook:"GothamBook",
-    GothamMedium:"GothamMedium",
+    GothamBold:"gotham_bold",
+    GothamBook:"gotham_book",
+    GothamMedium:"gotham_medium",
+    AlexBrush:"alexbrush-regular"
    // Pacifico:"Pacifico"
 }
 

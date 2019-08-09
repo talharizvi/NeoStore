@@ -48,14 +48,17 @@ export default class MyOrder extends Component{
       <TouchableOpacity onPress={()=>{
         this.props.navigation.navigate('OrderDetail',{orderId:item.id})
       }}>
-        <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:10,fontFamily:'gotham_bold'}}>
+        {/* fontFamily:'gotham_bold' */}
+        <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:10,}}>
               <View >
-                  <Text style={{marginLeft:10,fontFamily:'gotham_medium'}}>OrderID :{item.id}</Text>
-                  <Text style={{marginLeft:10,fontFamily:'gotham_medium'}}>Ordered Date :{item.created}</Text>
+              {/* fontFamily:'gotham_medium' */}
+                  <Text style={{marginLeft:10,}}>OrderID :{item.id}</Text>
+                  <Text style={{marginLeft:10,}}>Ordered Date :{item.created}</Text>
               </View>
 
               <View>
-                  <Text style={{marginRight:10,fontFamily:'gotham_medium'}}>Rs {item.cost}</Text>
+              {/* fontFamily:'gotham_medium' */}
+                  <Text style={{marginRight:10,}}>Rs {item.cost}</Text>
               </View>
         </View>
 

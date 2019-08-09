@@ -14,7 +14,7 @@ export default class OrderDetail extends Component{
         headerTitleStyle:{
             fontSize: 20,
             color:R.color.textInputBorderColor,
-            fontFamily: 'gotham_medium' 
+            // fontFamily: 'gotham_medium' 
           },
     })
 
@@ -56,13 +56,15 @@ export default class OrderDetail extends Component{
 
                 <View>
                     <View style={{marginHorizontal:10}}>
-                        <Text style={{fontFamily:"gotham_book"}}>{item.prod_name}</Text>
-                        <Text style={{fontFamily:"gotham_book"}}>{item.prod_cat_name}</Text>
+                    {/* style={{fontFamily:"gotham_book"}} */}
+                        <Text >{item.prod_name}</Text>
+                        <Text >{item.prod_cat_name}</Text>
                     </View>
 
                     <View style={{flexDirection:'row',justifyContent:'space-between',marginHorizontal:10,marginTop:20}}>
-                        <Text style={{fontFamily:"gotham_book"}}>QTY : {item.quantity}</Text>
-                        <Text style={{fontFamily:"gotham_book"}}>Rs{item.total}</Text>
+                    {/* style={{fontFamily:"gotham_book"}} */}
+                        <Text >QTY : {item.quantity}</Text>
+                        <Text >Rs{item.total}</Text>
                     </View>
                 </View>
             </View>

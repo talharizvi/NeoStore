@@ -8,8 +8,8 @@ const CustomText=({sourceImage,textTitle})=>{
     <View style={style.textInputStyle}>
          <Image style={{justifyContent:'center',marginHorizontal:10} } source={sourceImage}
          />
-
-         <Text style ={{flex:1,fontSize:30,color:R.color.textInputBorderColor,fontFamily:"gotham_book"}}
+{/* fontFamily:"gotham_book" */}
+         <Text style ={{flex:1,fontSize:30,color:R.color.textInputBorderColor,}}
          >
              {textTitle}
          </Text>   

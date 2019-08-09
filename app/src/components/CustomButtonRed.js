@@ -11,7 +11,8 @@ const CustomButtonRed =({title,onPress})=> {
         padding:5,
         borderRadius: 5,
         backgroundColor: R.color.backgroundColorDefault,alignItems:'center'}} onPress={onPress}>
-         <Text style={{fontSize:20,padding:5,color:R.color.textInputBorderColor,font_family:"gotham_book"}}>{title}</Text>
+            {/* font_family:"gotham_book" */}
+         <Text style={{fontSize:20,padding:5,color:R.color.textInputBorderColor,}}>{title}</Text>
      </TouchableOpacity>
     
 

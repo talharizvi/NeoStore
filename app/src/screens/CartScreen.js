@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View,Text,Image,FlatList,Button,Picker,TouchableOpacity} from 'react-native';
+import {View,Text,Image,FlatList,Button,Picker,TouchableOpacity,ActivityIndicator} from 'react-native';
 import R from '../R';
 import CustomButtonRed from '../components/CustomButtonRed';
 import Api from '../components/Api';
@@ -12,7 +12,7 @@ export default class CartScreen extends Component{
     constructor(props){
         super(props)
         this.state={
-            itemList:[],
+            itemList:null,
             pickerValueHolder:'4',
             pickValue0: 1,
             totalAmount:'',
@@ -64,25 +64,23 @@ export default class CartScreen extends Component{
 
     
 
-      renderPickerData (itemId,iVal) {
+      renderPickerData (itemId,iVal,itemQuantity) {
      
         return (<View key={iVal.toString()}>
-          {this.renderPicker(itemId,iVal)}
+          {this.renderPicker(itemId,iVal,itemQuantity)}
         </View>)
       };
 
-      renderPicker(itemId,iVal){
+      renderPicker(itemId,iVal,itemQuantity){
         return (
         <Picker style={{ width: 100,
             height: 40}} 
-            selectedValue={this.state['pickValue' + iVal]
-        } 
+            // selectedValue={this.state['pickValue' + iVal]}
+            selectedValue={itemQuantity}
             onValueChange={(value) => {this.setState({['pickValue' + iVal]: value})
             console.log("selected value"+value)
             console.log("itemid:"+itemId)
-            
             this.editCart(itemId,value)
-        
         }
         }>
           <Picker.Item label="1" value={1} />
@@ -92,11 +90,27 @@ export default class CartScreen extends Component{
           <Picker.Item  label="5" value={5} />
           <Picker.Item  label="6" value={6} />
         </Picker>);
-      }  
+      }
+      
+      showAlertWithDelay=()=>{
+ 
+        setTimeout(function(){
+          alert("Alert Shows After 5 Seconds of Delay.")
+        }, 6000);
+     
+      }
    
     
     render(){  
-        
+        // if(this.state.itemList.length==0){
+            if(this.state.itemList==null){
+            return(
+            <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+            <ActivityIndicator size='large' color={R.color.backgroundColorDefault}/>
+            {/* {this.showAlertWithDelay()} */}
+            </View>
+            )
+        }
         return(<View style={{flex:1}}>
             <FlatList 
             data={this.state.itemList}
@@ -113,7 +127,7 @@ export default class CartScreen extends Component{
                                 <Text >{item.product.name}</Text>
                                 <Text >{item.product.product_category}</Text>
                     
-                                 {this.renderPickerData(item.product_id,index)}
+                                 {this.renderPickerData(item.product_id,index,item.quantity)}
                             </View>
                             <View style={{marginLeft:40,marginRight:5}}>
                                 <TouchableOpacity onPress={()=>{
@@ -127,6 +141,7 @@ export default class CartScreen extends Component{
                         
                     </View>
             }
+            keyExtractor={(item)=>item.toString()}
             >
 
             </FlatList>

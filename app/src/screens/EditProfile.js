@@ -17,10 +17,23 @@ export default class EditProfile extends Component{
       phoneNo:'',
       dob:'',
       accessToken:'',
-      profilePic:null
+      profilePic:null,
+      dataSource:'',
     }
   }
 
+  componentDidMount(){
+    this.getUserData()
+  }
+
+  getUserData(){
+    const endPoint='users/getUserData';
+    return Api(endPoint,'GET',null).then((responseJson)=>{
+      console.log(responseJson)
+      this.setState({firstName:responseJson.data.user_data.first_name , lastName:responseJson.data.user_data.last_name , email:responseJson.data.user_data.email ,dob:responseJson.data.user_data.dob , phoneNo:responseJson.data.user_data.phone_no , dataSource:responseJson.data.user_data})
+      console.log(this.state)
+    })
+  }
 
   updateAccount(firstName,lastName,email,dob,profilePic,phoneNo){
     console.log("called update")
@@ -37,11 +50,11 @@ export default class EditProfile extends Component{
             <Image source={{uri:'https://facebook.github.io/react-native/docs/assets/favicon.png'}} style={style.roundImageStyle}></Image>
               
           </View>
-            <CustomTextInput sourceImage={R.images.username_icon} placeholdeValue='First Name' onChangeText={(firstName)=>this.setState({firstName})}></CustomTextInput>
-            <CustomTextInput sourceImage={R.images.username_icon} placeholdeValue='Last Name'  onChangeText={(lastName)=>this.setState({lastName})}></CustomTextInput>
-            <CustomTextInput sourceImage={R.images.email_icon} placeholdeValue='Email' onChangeText={(email)=>this.setState({email})}></CustomTextInput>
-            <CustomTextInput sourceImage={R.images.cellphone} placeholdeValue='Phone Number' onChangeText={(phoneNo)=>this.setState({phoneNo})}></CustomTextInput>
-            <CustomTextInput sourceImage={R.images.dob_icon} placeholdeValue='DOB' onChangeText={(dob)=>this.setState({dob})}></CustomTextInput>
+            <CustomTextInput sourceImage={R.images.username_icon} placeholdeValue={this.state.dataSource.first_name} onChangeText={(firstName)=>this.setState({firstName})}></CustomTextInput>
+            <CustomTextInput sourceImage={R.images.username_icon} placeholdeValue={this.state.dataSource.last_name}  onChangeText={(lastName)=>this.setState({lastName})}></CustomTextInput>
+            <CustomTextInput sourceImage={R.images.email_icon} placeholdeValue={this.state.dataSource.email} onChangeText={(email)=>this.setState({email})}></CustomTextInput>
+            <CustomTextInput sourceImage={R.images.cellphone} placeholdeValue={this.state.dataSource.phone_no} onChangeText={(phoneNo)=>this.setState({phoneNo})}></CustomTextInput>
+            <CustomTextInput sourceImage={R.images.dob_icon} placeholdeValue={this.state.dataSource.dob} onChangeText={(dob)=>this.setState({dob})}></CustomTextInput>
             <CustomButton title='SUBMIT' onPress={()=>{
               this.updateAccount(this.state.firstName,this.state.lastName,this.state.email,
                 this.state.dob,null,this.state.phoneNo)

@@ -18,38 +18,27 @@ export default class MyOrder extends Component{
     
 
     componentDidMount(){
-     
       this.getOrderList()
     }
 
     getOrderList(){
-      
       return Api('orderList','GET',null)
       .then((responseJson)=>{
-        this.setState({orderArr:responseJson.data})
-        console.log(responseJson)
+        this.setState({orderArr:responseJson.data.reverse()})       
       })
+      
     }
 
-    // getAccessTokenData=async()=>{
-    //   try{
-    //       let accessToken = await AsyncStorage.getItem('access_token')
-    //       this.setState({accessToken:accessToken})
-    //       this.getOrderList()
-    //       console.log(accessToken)        
-    //     }catch(error){
-    //       console.log(error)
-    //     }
-    // }
-
     renderOrderList(){
+     
+      if(this.state.orderArr.length!=0){
       return(
       this.state.orderArr.map((item)=>
-      <TouchableOpacity onPress={()=>{
+      <TouchableOpacity key={'mykey'+item.id} onPress={()=>{
         this.props.navigation.navigate('OrderDetail',{orderId:item.id})
       }}>
         {/* fontFamily:'gotham_bold' */}
-        <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:10,}}>
+        <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:10,borderBottomColor: R.color.blackColor,borderBottomWidth: 1}}>
               <View >
               {/* fontFamily:'gotham_medium' */}
                   <Text style={{marginLeft:10,}}>OrderID :{item.id}</Text>
@@ -64,6 +53,13 @@ export default class MyOrder extends Component{
 
       </TouchableOpacity>
       ))
+    }else{
+      // return(
+      //   <View>
+      //     <Text>No Orders yet</Text>
+      //   </View>
+      // )
+    }
     }
 
     render(){

@@ -3,7 +3,8 @@ import {View,Button,Image,TextInput,Text,ActivityIndicator} from 'react-native';
 import R from '../R';
 import style from '../Styles';
 import CustomButton from '../components/CustomButton';
-import CustomTextInput from '../components/CustomTextInput'
+import CustomTextInput from '../components/CustomTextInput';
+import CustomTextInputSecure from '../components/CustomTextInputSecure';
 import AsyncStorage from '@react-native-community/async-storage';
 import Api from '../components/Api';
 
@@ -88,7 +89,8 @@ export default class LoginScreen extends Component{
           
             <CustomTextInput sourceImage={R.images.username_icon} placeholdeValue='UserName' onChangeText={(userName)=>{this.setState({userName})}}/>
 
-            <CustomTextInput sourceImage={R.images.password_icon} placeholdeValue='Password' onChangeText={(password)=>{this.setState({password})}}/>
+            {/* <CustomTextInput sourceImage={R.images.password_icon} placeholdeValue='Password' onChangeText={(password)=>{this.setState({password})}}/> */}
+            <CustomTextInputSecure sourceImage={R.images.password_icon} placeholdeValue='Password' onChangeText={(password)=>{this.setState({password})}}/>
 
             <CustomButton title='LOGIN' onPress={()=>{
                

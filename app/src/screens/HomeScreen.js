@@ -3,7 +3,7 @@ import { View, Text,Image,ScrollView,FlatList,TouchableOpacity,StatusBar,YellowB
 import R from '../R';
 import HamburgerIcon from '../components/HamburgerIcon';
 import {IndicatorViewPager, PagerDotIndicator} from 'rn-viewpager';
-
+import ShoppingCartButton from '../components/ShoppingCartButton';
 
 export default class HomeScreen extends Component {
   
@@ -14,8 +14,16 @@ export default class HomeScreen extends Component {
       backgroundColor:R.color.backgroundColorDefault
   },
     headerLeft:
-     <HamburgerIcon navigationProps={navigation} />
-    
+     <HamburgerIcon navigationProps={navigation} />,
+     headerRight:(
+    //   <TouchableOpacity>
+    //  <Image source={R.images.header_shopping_cart} style={{width:20,height:20,marginRight:10}} />
+    //  </TouchableOpacity>
+      <ShoppingCartButton onPress={()=>{navigation.navigate('MyCart')}}/>
+    )
+    //  <Image source={R.images.header_shopping_cart} style={{width:20,height:20,marginRight:10}}  onPress={()=>{alert("Hi")}}/>,
+   
+     
   }) 
 
     state={

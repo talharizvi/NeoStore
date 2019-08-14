@@ -124,8 +124,8 @@ export default class CartScreen extends Component{
 
                             <View>
                             {/* style={{fontFamily:"gotham_medium"}} */}
-                                <Text >{item.product.name}</Text>
-                                <Text >{item.product.product_category}</Text>
+                                <Text style={{font_family:R.fonts.GothamBlack}}>{item.product.name}</Text>
+                                <Text style={{font_family:R.fonts.GothamBlack}}>{item.product.product_category}</Text>
                     
                                  {this.renderPickerData(item.product_id,index,item.quantity)}
                             </View>
@@ -136,7 +136,7 @@ export default class CartScreen extends Component{
                                     <Image source={R.images.delete} style={{width:50,height:50}}></Image>    
                                 </TouchableOpacity>
                                 {/* style={{fontFamily:"gotham_medium"}} */}
-                                <Text >Rs{item.product.sub_total}</Text>
+                                <Text style={{font_family:R.fonts.GothamBlack}}>Rs{item.product.sub_total}</Text>
                             </View> 
                         
                     </View>

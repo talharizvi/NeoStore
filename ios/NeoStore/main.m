@@ -10,7 +10,21 @@
 #import "AppDelegate.h"
 
 int main(int argc, char * argv[]) {
+  //for checking all fonts 
+  for (NSString* family in [UIFont familyNames])
+  {
+    NSLog(@"%@", family);
+    
+    for (NSString* name in [UIFont fontNamesForFamilyName: family])
+    {
+      NSLog(@"  %@", name);
+    }
+  }
+  
   @autoreleasepool {
     return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
   }
+
+  
 }
+

@@ -9,7 +9,7 @@ const CustomText=({sourceImage,textTitle})=>{
          <Image style={{justifyContent:'center',marginHorizontal:10} } source={sourceImage}
          />
 {/* fontFamily:"gotham_book" */}
-         <Text style ={{flex:1,fontSize:30,color:R.color.textInputBorderColor,}}
+         <Text style ={{flex:1,fontSize:30,color:R.color.textInputBorderColor,fontFamily:R.fonts.GothamBlack}}
          >
              {textTitle}
          </Text>   

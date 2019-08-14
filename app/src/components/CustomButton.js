@@ -8,7 +8,7 @@ const CustomButton =({title,onPress})=> {
    
         <TouchableOpacity style={style.buttonStyle} onPress={onPress}>
             {/* fontFamily:"gotham_medium" */}
-            <Text style={{fontSize:30,textAlign:'center',color:R.color.backgroundColorDefault,}}>{title}</Text>
+            <Text style={{fontSize:30,textAlign:'center',color:R.color.backgroundColorDefault,fontFamily:R.fonts.GothamBlack}}>{title}</Text>
         </TouchableOpacity>
        
    

@@ -41,13 +41,13 @@ export default class MyOrder extends Component{
         <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:10,borderBottomColor: R.color.blackColor,borderBottomWidth: 1}}>
               <View >
               {/* fontFamily:'gotham_medium' */}
-                  <Text style={{marginLeft:10,}}>OrderID :{item.id}</Text>
-                  <Text style={{marginLeft:10,}}>Ordered Date :{item.created}</Text>
+                  <Text style={{marginLeft:10,fontFamily:R.fonts.GothamBlack}}>OrderID :{item.id}</Text>
+                  <Text style={{marginLeft:10,fontFamily:R.fonts.GothamBlack}}>Ordered Date :{item.created}</Text>
               </View>
 
               <View>
               {/* fontFamily:'gotham_medium' */}
-                  <Text style={{marginRight:10,}}>Rs {item.cost}</Text>
+                  <Text style={{marginRight:10,fontFamily:R.fonts.GothamBlack}}>Rs {item.cost}</Text>
               </View>
         </View>
 

@@ -1,10 +1,10 @@
 
 const fonts={
-    GothamBold:"gotham_bold",
-    GothamBook:"gotham_book",
-    GothamMedium:"gotham_medium",
-    AlexBrush:"alexbrush-regular"
-   // Pacifico:"Pacifico"
+    GothamBlack:'Gotham-Black',
+    GothamBold:'Gotham-Bold',
+    GothamLight:'Gotham-Light',
+   
+   
 }
 
 export default fonts

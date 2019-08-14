@@ -9,7 +9,7 @@ const CustomTextInputSecure=({sourceImage,placeholdeValue,onChangeText})=>{
          <Image style={{justifyContent:'center',marginHorizontal:10} } source={sourceImage}
          />
 {/* fontFamily:"gotham_book" */}
-         <TextInput style ={{flex:1,fontSize:30,color:R.color.textInputBorderColor,}} underlineColorAndroid={"transparent"} placeholderTextColor={R.color.textInputBorderColor} placeholder={placeholdeValue}
+         <TextInput style ={{flex:1,fontSize:30,color:R.color.textInputBorderColor,fontFamily:R.fonts.GothamBlack}} underlineColorAndroid={"transparent"} placeholderTextColor={R.color.textInputBorderColor} placeholder={placeholdeValue}
             onChangeText={onChangeText} 
             secureTextEntry={true}
          >

@@ -16,7 +16,7 @@ export default class ItemScreen extends Component {
     headerTitleStyle:{
       fontSize: 20,
       color:R.color.textInputBorderColor,
-      // fontFamily: 'gotham_medium' 
+       fontFamily: R.fonts.GothamBlack 
     },
 })
 

@@ -24,6 +24,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import AppNavigator from './Routes';
+//import Icon from 'react-native-vector-icons/MaterialIcons'
+
+// Icon.loadFont();
 
 const App = () => {
   return (

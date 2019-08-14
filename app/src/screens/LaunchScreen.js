@@ -43,7 +43,7 @@ export default class LaunchScreen extends Component{
                 <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:R.color.backgroundColorDefault}}>
                     <StatusBar backgroundColor={R.color.backgroundColorDefault}></StatusBar>
                     {/* fontFamily:'gotham_bold' */}
-                    <Text style={{fontSize:30,color:R.color.textInputBorderColor,}}> NeoSTORE</Text>
+                    <Text style={{fontSize:30,color:R.color.textInputBorderColor,fontFamily:R.fonts.GothamBold}}> NeoSTORE</Text>
                     <ActivityIndicator size='large' color={R.color.textInputBorderColor}></ActivityIndicator>
                 </View>
             )

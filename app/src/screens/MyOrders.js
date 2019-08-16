@@ -37,16 +37,13 @@ export default class MyOrder extends Component{
       <TouchableOpacity key={'mykey'+item.id} onPress={()=>{
         this.props.navigation.navigate('OrderDetail',{orderId:item.id})
       }}>
-        {/* fontFamily:'gotham_bold' */}
         <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:10,borderBottomColor: R.color.blackColor,borderBottomWidth: 1}}>
               <View >
-              {/* fontFamily:'gotham_medium' */}
                   <Text style={{marginLeft:10,fontFamily:R.fonts.GothamBlack}}>OrderID :{item.id}</Text>
                   <Text style={{marginLeft:10,fontFamily:R.fonts.GothamBlack}}>Ordered Date :{item.created}</Text>
               </View>
 
               <View>
-              {/* fontFamily:'gotham_medium' */}
                   <Text style={{marginRight:10,fontFamily:R.fonts.GothamBlack}}>Rs {item.cost}</Text>
               </View>
         </View>

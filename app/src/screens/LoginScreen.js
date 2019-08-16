@@ -88,8 +88,6 @@ export default class LoginScreen extends Component{
             <Text style={[style.headerTitleStyle]}>{R.strings.AppName}</Text>
           
             <CustomTextInput sourceImage={R.images.username_icon} placeholdeValue='UserName' onChangeText={(userName)=>{this.setState({userName})}}/>
-
-            {/* <CustomTextInput sourceImage={R.images.password_icon} placeholdeValue='Password' onChangeText={(password)=>{this.setState({password})}}/> */}
             <CustomTextInputSecure sourceImage={R.images.password_icon} placeholdeValue='Password' onChangeText={(password)=>{this.setState({password})}}/>
 
             <CustomButton title='LOGIN' onPress={()=>{
@@ -97,11 +95,9 @@ export default class LoginScreen extends Component{
                 this.loginUser(this.state.userName,this.state.password)
                 }}/>
 
-{/* fontFamily:"gotham_book" */}
             <Text style={{marginTop:10,color:R.color.textInputBorderColor,fontSize:20,fontFamily:R.fonts.GothamBlack}} onPress={()=>{this.props.navigation.navigate('ForgotPassWord')}}>Forgot Password?</Text>
         {this.state.showIndicator && (<ActivityIndicator size='large' color={R.color.textInputBorderColor}/>)}
             <View style={{flex:1 ,flexDirection:'row',alignItems:'center',justifyContent:'flex-end',marginTop:140}}>
-            {/* fontFamily:"gotham_book" */}
                 <Text style={{color:R.color.textInputBorderColor,fontSize:20,fontFamily:R.fonts.GothamBlack}} onPress={()=>{
                     this.props.navigation.navigate('Register')
                 }}

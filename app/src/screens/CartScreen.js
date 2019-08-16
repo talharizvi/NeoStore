@@ -3,7 +3,7 @@ import {View,Text,Image,FlatList,Button,Picker,TouchableOpacity,ActivityIndicato
 import R from '../R';
 import CustomButtonRed from '../components/CustomButtonRed';
 import Api from '../components/Api';
-
+import InputSpinner from "react-native-input-spinner";
 
 export default class CartScreen extends Component{
     
@@ -66,30 +66,45 @@ export default class CartScreen extends Component{
 
       renderPickerData (itemId,iVal,itemQuantity) {
      
-        return (<View key={iVal.toString()}>
+        return (<View key={itemId.toString()}>
           {this.renderPicker(itemId,iVal,itemQuantity)}
         </View>)
       };
 
       renderPicker(itemId,iVal,itemQuantity){
         return (
-        <Picker style={{ width: 100,
-            height: 40}} 
-            // selectedValue={this.state['pickValue' + iVal]}
-            selectedValue={itemQuantity}
-            onValueChange={(value) => {this.setState({['pickValue' + iVal]: value})
-            console.log("selected value"+value)
-            console.log("itemid:"+itemId)
-            this.editCart(itemId,value)
-        }
-        }>
-          <Picker.Item label="1" value={1} />
-          <Picker.Item label="2" value={2} />
-          <Picker.Item label="3" value={3} />
-          <Picker.Item  label="4" value={4} />
-          <Picker.Item  label="5" value={5} />
-          <Picker.Item  label="6" value={6} />
-        </Picker>);
+        // <Picker style={{ width: 100,
+        //     height: 40}} 
+        //     selectedValue={itemQuantity}
+        //     onValueChange={(value) => {this.setState({['pickValue' + iVal]: value})
+        //     console.log("selected value"+value)
+        //     console.log("itemid:"+itemId)
+        //     this.editCart(itemId,value)
+        // }
+        // }>
+        //   <Picker.Item label="1" value={1} />
+        //   <Picker.Item label="2" value={2} />
+        //   <Picker.Item label="3" value={3} />
+        //   <Picker.Item  label="4" value={4} />
+        //   <Picker.Item  label="5" value={5} />
+        //   <Picker.Item  label="6" value={6} />
+        // </Picker>
+      <InputSpinner
+	    max={10}
+	    min={1}
+	    step={1}
+	    colorMax={"#f04048"}
+	    colorMin={"#40c5f4"}
+        value={itemQuantity}
+        
+	    onChange={(num) => {
+        this.setState({['pickValue' + iVal]: num})
+        this.editCart(itemId,num)    
+		console.log(num);
+        
+	}}
+        style={{marginTop:10}}/>
+        );
       }
       
       showAlertWithDelay=()=>{
@@ -102,7 +117,7 @@ export default class CartScreen extends Component{
    
     
     render(){  
-        // if(this.state.itemList.length==0){
+       
             if(this.state.itemList==null){
             return(
             <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
@@ -123,10 +138,8 @@ export default class CartScreen extends Component{
                         </View>
 
                             <View>
-                            {/* style={{fontFamily:"gotham_medium"}} */}
-                                <Text style={{font_family:R.fonts.GothamBlack}}>{item.product.name}</Text>
-                                <Text style={{font_family:R.fonts.GothamBlack}}>{item.product.product_category}</Text>
-                    
+                                <Text style={{fontFamily:R.fonts.GothamBlack}}>{item.product.name}</Text>
+                                <Text style={{fontFamily:R.fonts.GothamBlack}}>{item.product.product_category}</Text>
                                  {this.renderPickerData(item.product_id,index,item.quantity)}
                             </View>
                             <View style={{marginLeft:40,marginRight:5}}>
@@ -135,21 +148,21 @@ export default class CartScreen extends Component{
                                 }}>
                                     <Image source={R.images.delete} style={{width:50,height:50}}></Image>    
                                 </TouchableOpacity>
-                                {/* style={{fontFamily:"gotham_medium"}} */}
-                                <Text style={{font_family:R.fonts.GothamBlack}}>Rs{item.product.sub_total}</Text>
+                                
+                                <Text style={{fontFamily:R.fonts.GothamBold}}>Rs{item.product.sub_total}</Text>
                             </View> 
                         
                     </View>
             }
-            keyExtractor={(item)=>item.toString()}
+            keyExtractor={(item,index)=>index.toString()}
             >
 
             </FlatList>
             <View style={{flexDirection:'row',justifyContent:'space-between',margin:10}}>
-            {/* style={{fontFamily:"gotham_bold"}} */}
-            <Text >Total</Text>
-            {/* fontFamily:"gotham_bold" */}
-            <Text style={{color:R.color.backgroundColorDefault,}}>Rs {this.state.totalAmount}</Text>
+           
+            <Text style={{fontFamily:R.fonts.GothamBold}}>Total</Text>
+          
+            <Text style={{color:R.color.backgroundColorDefault,fontFamily:R.fonts.GothamBold}}>Rs {this.state.totalAmount}</Text>
             </View>
             
             <CustomButtonRed title="Order Now" onPress={()=>{

@@ -42,25 +42,21 @@ export default class AddressScreen extends Component{
        
         return(
             <View>
-                {/* style={{font_family:"gotham_medium"}} */}
-                <Text style={{font_family:R.fonts.GothamBlack}}> Address</Text>
+                <Text style={{fontFamily:R.fonts.GothamBlack}}> Address</Text>
                 <TextInput placeholder={"Neosoft Technologies 4th floor,\nThe Ruby,29,Senapati Bapat Marg,\nDadar (West) Mumbai-400028.INDIA"} onChangeText={(address)=>{this.setState({address})
 
                 }}></TextInput>
-                {/* style={{font_family:"gotham_medium"}} */}
-                <Text style={{font_family:R.fonts.GothamBlack}}>CITY</Text>
+                <Text style={{fontFamily:R.fonts.GothamBlack}}>CITY</Text>
                 <TextInput placeholder="LANDMARK" onChangeText={(city)=>{this.setState({city})}}></TextInput>
                 
                 <View style={{flexDirection:'row'}}>
                     <View style={{marginRight:150}}>
-                    {/* style={{font_family:"gotham_medium"}} */}
-                        <Text style={{font_family:R.fonts.GothamBlack}}>CITY</Text>
+                        <Text style={{fontFamily:R.fonts.GothamBlack}}>CITY</Text>
                         <TextInput placeholder="MUMBAI"/>
                     </View>
 
                     <View>
-                    {/* style={{font_family:"gotham_medium"}} */}
-                        <Text style={{font_family:R.fonts.GothamBlack}}>STATE</Text>
+                        <Text style={{fontFamily:R.fonts.GothamBlack}}>STATE</Text>
                         <TextInput placeholder="MAHARASHTRA"/>
                     </View>
                 </View>
@@ -69,14 +65,12 @@ export default class AddressScreen extends Component{
 
                 <View style={{flexDirection:'row'}}>
                     <View style={{marginRight:150}}>
-                    {/* style={{font_family:"gotham_medium"}} */}
-                        <Text style={{font_family:R.fonts.GothamBlack}} >ZIP CODE</Text>
+                        <Text style={{fontFamily:R.fonts.GothamBlack}} >ZIP CODE</Text>
                         <TextInput placeholder="10066" onChangeText={(zipCode)=>{this.setState({zipCode})}}/>
                     </View>
 
                     <View>
-                    {/* style={{font_family:"gotham_medium"}} */}
-                        <Text style={{font_family:R.fonts.GothamBlack}}>COUNTRY</Text>
+                        <Text style={{fontFamily:R.fonts.GothamBlack}}>COUNTRY</Text>
                         <TextInput placeholder="INDIA" onChangeText={(country)=>{this.setState({country})}}/>
                     </View>
                 </View>

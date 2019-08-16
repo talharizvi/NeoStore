@@ -107,10 +107,8 @@ export default class DetailScreen extends Component {
               
                   <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
                     <View style={{backgroundColor: '#fff', padding: 20,borderRadius:4}}>
-                
                       <View style={{alignItems:'center'}}>
-                      {/* style={{fontFamily:'gotham_medium'}} */}
-                        <Text style={{font_family:R.fonts.GothamBlack}}>{this.props.navigation.getParam('productName','Center Cofee Table')}</Text>
+                        <Text style={{fontFamily:R.fonts.GothamBlack}}>{this.props.navigation.getParam('productName','Center Cofee Table')}</Text>
                       </View>
                 
                   <View style={{borderWidth:2}}>
@@ -118,7 +116,6 @@ export default class DetailScreen extends Component {
                   </View>
 
                   <View style={{alignItems:'center'}}>
-                  {/* fontFamily:"gotham_book" */}
                     <TextInput style={{alignItems:'center',justifyContent:'center',fontFamily:R.fonts.GothamBlack}} placeholder='Enter Qty' onChangeText={(itemQuantity)=>this.setState({itemQuantity})} ></TextInput>
                   </View>
 
@@ -131,7 +128,6 @@ export default class DetailScreen extends Component {
                   }} >
 
                       <View style={{alignItems:'center'}}>
-                      {/* fontFamily:"gotham_book"         */}
                       <Text style={{color:R.color.textInputBorderColor,fontFamily:R.fonts.GothamBlack}} >Submit</Text>
                       </View>  
                     </TouchableOpacity>
@@ -153,8 +149,8 @@ export default class DetailScreen extends Component {
                 > 
                   <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
                   <View style={{backgroundColor: '#fff', padding: 20,borderRadius:4}}>
-                  {/* style={{fontFamily:'gotham_medium'}}   */}
-                  <Text style={{font_family:R.fonts.GothamBlack}}>
+                  
+                  <Text style={{fontFamily:R.fonts.GothamBlack}}>
                       {this.props.navigation.getParam('productName','Center Cofee Table')}
                   </Text>
 
@@ -169,7 +165,6 @@ export default class DetailScreen extends Component {
                   }} >
 
                       <View style={{alignItems:'center'}}>        
-                      {/* fontFamily:"gotham_book" */}
                       <Text style={{color:R.color.textInputBorderColor,fontFamily:R.fonts.GothamBlack}} >Submit</Text>
                       </View>  
                     </TouchableOpacity>
@@ -180,15 +175,12 @@ export default class DetailScreen extends Component {
                 </TouchableOpacity>
               </Modal>
         
-              {/* fontFamily:'gotham_medium' */}
               <Text style={{fontSize:20,fontFamily:R.fonts.GothamBlack}}> {this.state.itemDetail.name}</Text>
               <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
-              {/* fontFamily:'gotham_medium' */}
                 <Text style={{marginLeft:20,fontFamily:R.fonts.GothamBlack}}> {this.state.itemDetail.producer}</Text>
                 <View style={{flexDirection:'row'}}>{renderRating(this.state.itemDetail.rating)}</View>
               </View>  
               <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
-              {/* fontFamily:'gotham_bold' */}
                 <Text style={{color:R.color.backgroundColorDefault,marginLeft:20,fontFamily:R.fonts.GothamBold}}>Rs. {this.state.itemDetail.cost}</Text>
                 <Image source={R.images.share} style={{width:20,height:20,marginRight:20}}></Image>
               </View>
@@ -200,9 +192,7 @@ export default class DetailScreen extends Component {
               <ScrollView horizontal={true}>
                 {this.renderProductDetail()}
               </ScrollView>
-              {/* fontFamily:'gotham_bold' */}
               <Text style={{fontSize:15,fontFamily:R.fonts.GothamBold}}>Description :</Text>
-              {/* style={{fontFamily:'gotham_medium'}} */}
               <Text style={{fontFamily:R.fonts.GothamBlack}}> {this.state.itemDetail.description}</Text>
                 
           </ScrollView>
@@ -212,7 +202,6 @@ export default class DetailScreen extends Component {
                   <TouchableOpacity style={{backgroundColor:R.color.backgroundColorDefault,justifyContent: 'center',borderRadius: 5,marginRight:10,alignItems:'center',paddingVertical:10}} onPress={()=>{
                      this.setModalItemVisible(true)
                   }}>
-                    {/* fontFamily:'gotham_medium' */}
                      <Text style={{fontSize:20,color:R.color.textInputBorderColor,fontFamily:R.fonts.GothamBlack}}>Buy Now</Text>
                   </TouchableOpacity>
              </View>
@@ -220,7 +209,6 @@ export default class DetailScreen extends Component {
                   <TouchableOpacity style={{backgroundColor:"#bfbfbf",justifyContent: 'center',borderRadius: 5,marginLeft:10,alignItems:'center',paddingVertical:10}} onPress={()=>{
                       this.setModelItemRatingVisible(true)
                   }}>
-                    {/* fontFamily:'gotham_medium' */}
                   <Text style={{fontSize:20,color:R.color.drawerBackground,fontFamily:R.fonts.GothamBlack}}>Rate</Text>
                   </TouchableOpacity>
              </View>

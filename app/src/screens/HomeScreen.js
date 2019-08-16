@@ -16,14 +16,8 @@ export default class HomeScreen extends Component {
     headerLeft:
      <HamburgerIcon navigationProps={navigation} />,
      headerRight:(
-    //   <TouchableOpacity>
-    //  <Image source={R.images.header_shopping_cart} style={{width:20,height:20,marginRight:10}} />
-    //  </TouchableOpacity>
       <ShoppingCartButton onPress={()=>{navigation.navigate('MyCart')}}/>
     )
-    //  <Image source={R.images.header_shopping_cart} style={{width:20,height:20,marginRight:10}}  onPress={()=>{alert("Hi")}}/>,
-   
-     
   }) 
 
     state={

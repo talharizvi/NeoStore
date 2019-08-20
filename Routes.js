@@ -67,10 +67,12 @@ const MainNavigator= createStackNavigator({
         headerStyle:{
             backgroundColor:R.color.backgroundColorDefault
         },
+        headerBackTitle:null ,
         headerTitleStyle:{
           fontSize: 20,
           color:R.color.textInputBorderColor,
-          fontFamily: R.fonts.GothamBold 
+          fontFamily: R.fonts.GothamBold,
+          
         },
 }}
 );

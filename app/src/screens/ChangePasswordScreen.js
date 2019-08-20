@@ -42,8 +42,9 @@ export default class ChangePasswordScreen extends Component{
       }
     
     render(){
-        return(<View style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}>
-            
+        return(
+            <ScrollView style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}> 
+        <View style={{flex:1}}>    
             <StatusBar backgroundColor={R.color.backgroundColorDefault}></StatusBar>
             <CustomTextInput sourceImage={R.images.password_icon} placeholdeValue='Old Password' onChangeText={(oldPassword)=>{this.setState({oldPassword})}}/>
             <CustomTextInput sourceImage={R.images.password_icon} placeholdeValue='New Password' onChangeText={(newPassword)=>{this.setState({newPassword})}}/>
@@ -52,6 +53,8 @@ export default class ChangePasswordScreen extends Component{
                 this.changePassword(this.state.oldPassword,this.state.newPassword,this.state.confirmPassword)
             }}/>
            
-        </View>)
+        </View>
+        </ScrollView>
+        )
     }
 } 

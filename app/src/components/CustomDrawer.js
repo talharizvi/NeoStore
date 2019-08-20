@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import {View,Text,FlatList,TouchableOpacity,Image} from 'react-native';
+import {View,Text,FlatList,TouchableOpacity,Image,SafeAreaView} from 'react-native';
 import R from '../R';
 import style from "../Styles";
 import AsyncStorage from '@react-native-community/async-storage';
 import Api from './Api';
+import CartContext from '../context/CartContext';
 
 export default class CustomDrawer extends Component{
 
@@ -37,6 +38,7 @@ export default class CustomDrawer extends Component{
         .then((responseJson)=>{
             console.log(responseJson)
             this.setState({cartItemQuantity:responseJson.data.length})
+            
         }).catch((error)=>{
             console.log(error)
         })
@@ -54,51 +56,71 @@ export default class CustomDrawer extends Component{
 
     }
   }
+
+  displayCount(count){
+    if(count==1){
+        return( <CartContext.Consumer>
+            {contextValue=> <Text style={{color:R.color.textInputBorderColor,marginLeft:80,fontFamily:R.fonts.GothamBlack}}>{contextValue.state.count}</Text> }
+        </CartContext.Consumer>)
+    }else{
+
+    }
+  }
    
 
     render(){
         this.displayData()
         return(
-            <View style={{flex:1,backgroundColor:R.color.drawerBackground}}>
+            <SafeAreaView style={{flex:1,backgroundColor:R.color.drawerBackground}}>
                 <View style={{alignItems:'center', paddingTop:30,}}>
                     <Image source={{uri:'https://facebook.github.io/react-native/docs/assets/favicon.png'}} style={style.roundImageStyle}></Image>
-                    {/* fontFamily:'gotham_medium' */}
-                    <Text style={{color:R.color.textInputBorderColor,fontSize:20,fontFamily:R.fonts.GothamBlack}}>{this.state.userName}</Text>  
-                    <Text style={{color:R.color.textInputBorderColor,fontFamily:R.fonts.GothamBlack}}>{this.state.userEmail}</Text>
+                    
+                    <CartContext.Consumer>
+                               {contextValue=> <View style={{justifyContent:'center',alignItems:'center'}}><Text style={{color:R.color.textInputBorderColor,fontSize:20,fontFamily:R.fonts.GothamBlack}}>{contextValue.state.userName}</Text>
+                                               <Text style={{color:R.color.textInputBorderColor,fontSize:20,fontFamily:R.fonts.GothamBlack}}>{contextValue.state.userEmail}</Text> 
+                                               </View>
+                               }
+                           </CartContext.Consumer>
+         
                 </View>
 
+
                 <FlatList 
-            
-                   data={[{image:R.images.shopping_cart,title:"My Cart",screen:"MyCart",itemQuantity:this.state.cartItemQuantity},
-                            {image:R.images.tables_icon,title:"Tables",screen:"Item",itemId:1,itemType:'Tables'},
-                            {image:R.images.sofa_icon,title:"Sofas",screen:"Item",itemId:3,itemType:'Sofas'},
-                            {image:R.images.chair_icon,title:"Chairs",screen:"Item",itemId:2,itemType:'Chairs'},
-                            {image:R.images.cupboard_icon,title:"Cupboard",screen:"Item",itemId:4,itemType:'Cupboard'},
-                            {image:R.images.username_icon,title:"My Account",screen:"MyAccount"},
-                            {image:R.images.storelocator_icon,title:"Store Locator",screen:"StoreLocator"},
-                            {image:R.images.myorders_icon,title:"My Orders",screen:"MyOrder"},
-                            {image:R.images.logout_icon,title:"Logout",screen:''}
+                   data={[{image:R.images.shopping_cart,title:"My Cart",screen:"MyCart",cartCount:1},
+                            {image:R.images.tables_icon,title:"Tables",screen:"Item",itemId:1,itemType:'Tables',cartCount:0},
+                            {image:R.images.sofa_icon,title:"Sofas",screen:"Item",itemId:3,itemType:'Sofas',cartCount:0},
+                            {image:R.images.chair_icon,title:"Chairs",screen:"Item",itemId:2,itemType:'Chairs',cartCount:0},
+                            {image:R.images.cupboard_icon,title:"Cupboard",screen:"Item",itemId:4,itemType:'Cupboard',cartCount:0},
+                            {image:R.images.username_icon,title:"My Account",screen:"MyAccount",cartCount:0},
+                            {image:R.images.storelocator_icon,title:"Store Locator",screen:"StoreLocator",cartCount:0},
+                            {image:R.images.myorders_icon,title:"My Orders",screen:"MyOrder",cartCount:0},
+                            {image:R.images.logout_icon,title:"Logout",screen:'',cartCount:0}
                 ]}
     
                 renderItem={({item})=>
+                
                 <TouchableOpacity onPress={()=>{this.props.navigation.navigate(item.screen,{productCategoryId:item.itemId,itemCategory:item.itemType})
                     if(item.title=="Logout"){
                         
                          {this.clearTokenData()}   
                     }
+        
                 }}>
                     <View style={{flexDirection:"row",alignItems:'center'}}>
                         
                            <Image source={item.image} style={{width:30,height:30,marginLeft:10}}/>
-                           {/* fontFamily:'gotham_medium' */}
                            <Text style={{color:R.color.textInputBorderColor,fontSize:20,padding:10,marginLeft:10,fontFamily:R.fonts.GothamBlack}}>{item.title}</Text>
-                           <Text style={{color:R.color.textInputBorderColor,marginLeft:80,fontFamily:R.fonts.GothamBlack}}>{item.itemQuantity}</Text> 
+                            {this.displayCount(item.cartCount)}
+                           {/* <CartContext.Consumer>
+                               {contextValue=> <Text style={{color:R.color.textInputBorderColor,marginLeft:80,fontFamily:R.fonts.GothamBlack}}>{contextValue.state.count}</Text> }
+                           </CartContext.Consumer> */}
                      </View>
                      </TouchableOpacity>
                      }
                 >
                 </FlatList>
-            </View>
+                
+            </SafeAreaView>
         )
     }
     

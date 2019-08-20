@@ -23,15 +23,17 @@ export default class StarRating extends Component {
     this.Star_With_Border = R.images.star_unchek
 }
   updateRating(key) {
+    console.log("inside update rating"+key)
     this.setState({ Default_Rating: key });
     this.callRatingApi(this.props.productId,key)
   }
+
+ 
 
   callRatingApi(id,rate){
     fetch('http://staging.php-dev.in:8844/trainingapp/api/products/setRating',{
             method:'POST',
             headers:{
-               
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body:
@@ -51,9 +53,8 @@ export default class StarRating extends Component {
         <TouchableOpacity
           activeOpacity={0.7}
           key={i}
-          onPress={this.updateRating.bind(this, i)
-            
-          }
+          onPress={this.updateRating.bind(this, i)}
+          //onPress={()=>this.updateRating(i)}
           >
           <Image
             style={styles.StarImage}

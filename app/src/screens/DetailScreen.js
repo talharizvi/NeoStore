@@ -120,17 +120,23 @@ export default class DetailScreen extends Component {
                   </View>
 
                   <View style={style.buttonModalStyle}>
-                    <TouchableOpacity
-                     onPress={() => {
-                     this.setModalItemVisible(!this.state.modalItemVisible);
-                     this.addItemToCart(productId,this.state.itemQuantity)
-                     this.props. navigation.navigate('Home')
+
+                  <CartContext.Consumer>
+                      {contextValue=>(
+                      <TouchableOpacity
+                      onPress={() => {
+                        this.setModalItemVisible(!this.state.modalItemVisible);
+                        this.addItemToCart(productId,this.state.itemQuantity);
+                        this.props.navigation.navigate('Home');
+                        contextValue.plusCount();  
                   }} >
 
-                      <View style={{alignItems:'center'}}>
+                      <View style={{alignItems:'center'}}>        
                       <Text style={{color:R.color.textInputBorderColor,fontFamily:R.fonts.GothamBlack}} >Submit</Text>
                       </View>  
-                    </TouchableOpacity>
+                    </TouchableOpacity>)}
+                    
+                    </CartContext.Consumer>
                   </View>
                   </View>
                   </View>

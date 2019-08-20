@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,Image,ScrollView,FlatList,TouchableOpacity,StatusBar,YellowBox } from 'react-native';
+import { View, Text,Image,ScrollView,FlatList,TouchableOpacity,StatusBar,YellowBox} from 'react-native';
 import R from '../R';
 import HamburgerIcon from '../components/HamburgerIcon';
 import {IndicatorViewPager, PagerDotIndicator} from 'rn-viewpager';
@@ -31,6 +31,7 @@ export default class HomeScreen extends Component {
   render() {
     YellowBox.ignoreWarnings(['Warning: componentWillUpdate']);
     return (
+      <ScrollView style={{flex:1}}>
       <View style={{flex:1}}>
         <StatusBar backgroundColor={R.color.backgroundColorDefault}></StatusBar>
         <View style={{flex:2}}>
@@ -78,6 +79,7 @@ export default class HomeScreen extends Component {
        </View>
 
       </View>
+      </ScrollView>
     );
   }
 }

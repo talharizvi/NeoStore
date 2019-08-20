@@ -4,6 +4,8 @@ import R from '../R';
 import CustomButtonRed from '../components/CustomButtonRed';
 import Api from '../components/Api';
 import InputSpinner from "react-native-input-spinner";
+import CartContextProvider from '../context/CartContextProvider';
+import CartContext from '../context/CartContext';
 
 export default class CartScreen extends Component{
     
@@ -27,12 +29,23 @@ export default class CartScreen extends Component{
         this.getCartItemsFromApi() 
     }
 
+    // getCartItemCount(count){
+    //     return(<MyContext.Consumer> 
+    //         {data=>
+    //             {data.state.count}    
+    //         } 
+
+    //     </MyContext.Consumer>)
+    // }
+
     getCartItemsFromApi(){
        
         return Api('cart','GET',null)
         .then((responseJson)=>{
             console.log(responseJson)
             this.setState({itemList:responseJson.data,totalAmount:responseJson.total})
+            const itemCount = responseJson.count
+            
         }).catch((error)=>{
             console.error(error)
         }) 
@@ -57,9 +70,7 @@ export default class CartScreen extends Component{
         .then((responseJson)=>{
             console.log(responseJson)
             this.getCartItemsFromApi()
-        })
-       
-         
+        })  
     }
 
     
@@ -73,22 +84,7 @@ export default class CartScreen extends Component{
 
       renderPicker(itemId,iVal,itemQuantity){
         return (
-        // <Picker style={{ width: 100,
-        //     height: 40}} 
-        //     selectedValue={itemQuantity}
-        //     onValueChange={(value) => {this.setState({['pickValue' + iVal]: value})
-        //     console.log("selected value"+value)
-        //     console.log("itemid:"+itemId)
-        //     this.editCart(itemId,value)
-        // }
-        // }>
-        //   <Picker.Item label="1" value={1} />
-        //   <Picker.Item label="2" value={2} />
-        //   <Picker.Item label="3" value={3} />
-        //   <Picker.Item  label="4" value={4} />
-        //   <Picker.Item  label="5" value={5} />
-        //   <Picker.Item  label="6" value={6} />
-        // </Picker>
+        
       <InputSpinner
 	    max={10}
 	    min={1}
@@ -103,7 +99,8 @@ export default class CartScreen extends Component{
 		console.log(num);
         
 	}}
-        style={{marginTop:10}}/>
+        style={{marginTop:10}}
+        />
         );
       }
       
@@ -143,12 +140,14 @@ export default class CartScreen extends Component{
                                  {this.renderPickerData(item.product_id,index,item.quantity)}
                             </View>
                             <View style={{marginLeft:40,marginRight:5}}>
-                                <TouchableOpacity onPress={()=>{
-                                    this.deleteItem(item.product_id)
-                                }}>
-                                    <Image source={R.images.delete} style={{width:50,height:50}}></Image>    
-                                </TouchableOpacity>
-                                
+                                <CartContext.Consumer>
+                                    {contextValue=>(<TouchableOpacity onPress={()=>{this.deleteItem(item.product_id);
+                                    contextValue.minusCount();}
+                                    }>
+                                        <Image source={R.images.delete} style={{width:50,height:50}}></Image>
+                                    </TouchableOpacity>)}
+                                </CartContext.Consumer>
+                               
                                 <Text style={{fontFamily:R.fonts.GothamBold}}>Rs{item.product.sub_total}</Text>
                             </View> 
                         

@@ -24,14 +24,13 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import AppNavigator from './Routes';
-//import Icon from 'react-native-vector-icons/MaterialIcons'
-
-// Icon.loadFont();
+import CartContextProvider from './app/src/context/CartContextProvider';
 
 const App = () => {
   return (
-
-    <AppNavigator/>
+    <CartContextProvider>
+      <AppNavigator/>
+    </CartContextProvider>
   );
 };
 

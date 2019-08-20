@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Image,Text} from 'react-native';
+import {View,Image,Text,ScrollView} from 'react-native';
 import R from '../R';
 import CustomText from '../components/CustomText';
 import CustomButton from '../components/CustomButton';
@@ -32,7 +32,8 @@ export default class MyAccount extends Component{
     render(){
       console.log(this.state)
         return(
-        <View style={{flex:1,backgroundColor:R.color.backgroundColorDefault,alignItems: "center"}}>
+        <ScrollView style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}>  
+        <View style={{flex:1,alignItems: "center"}}>
           <View style={{alignItems:'center', paddingTop:30}}>
             <Image source={{uri:'https://facebook.github.io/react-native/docs/assets/favicon.png'}} style={style.roundImageStyle}></Image>
           </View>
@@ -48,6 +49,8 @@ export default class MyAccount extends Component{
               this.props.navigation.navigate('ChangePassword')
           }}/>
 
-        </View>)
+        </View>
+        </ScrollView>
+        )
     }
 }

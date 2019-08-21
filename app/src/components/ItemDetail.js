@@ -17,13 +17,11 @@ const ItemDetail=({itemImage,itemName,itemProducer,itemCost,itemRating})=>{
 
         <View>    
             <View style={{marginLeft:10}}>
-            {/* style={{fontFamily:'gotham_medium'}} */}
                 <Text style={{fontFamily:R.fonts.GothamBlack}}>{itemName}</Text>
                 <Text style={{fontFamily:R.fonts.GothamBlack}}>{itemProducer}</Text>
             </View>
 
             <View style={{margin:10,flexDirection:'row'}}>
-            {/* fontFamily:'gotham_medium' */}
                 <Text style={{color:R.color.backgroundColorDefault,fontFamily:R.fonts.GothamBlack}}>Rs {itemCost}</Text>
                 <View style={{flexDirection:'row',marginLeft:150}}>{renderRating(itemRating)}</View>
             </View>
@@ -48,11 +46,11 @@ const ItemDetail=({itemImage,itemName,itemProducer,itemCost,itemRating})=>{
         
         return(
             elements.map((item)=>{
-                // return(
+              
                 <View >
                 {item}
                 </View>
-                    // )
+                    
             }) 
             
         )

@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import { View, Text,Image,ScrollView,FlatList,TouchableOpacity,StatusBar,YellowBox} from 'react-native';
 import R from '../R';
 import HamburgerIcon from '../components/HamburgerIcon';
-import {IndicatorViewPager, PagerDotIndicator} from 'rn-viewpager';
 import ShoppingCartButton from '../components/ShoppingCartButton';
+import {ImageCarousel} from '../components/ImageCarousel';
+
+
+
+const images=[
+  R.images.slider_img1,
+  R.images.slider_img2,
+  R.images.slider_img3,
+  R.images.slider_img4
+]
 
 export default class HomeScreen extends Component {
   
@@ -24,9 +33,6 @@ export default class HomeScreen extends Component {
       productCategoryId:1
     }
 
-    renderDotIndicator() {
-      return <PagerDotIndicator pageCount={4} />;
-  }
 
   render() {
     YellowBox.ignoreWarnings(['Warning: componentWillUpdate']);
@@ -35,30 +41,9 @@ export default class HomeScreen extends Component {
       <View style={{flex:1}}>
         <StatusBar backgroundColor={R.color.backgroundColorDefault}></StatusBar>
         <View style={{flex:2}}>
-        
-          {/* <ScrollView horizontal={true} >
-            <Image source={R.images.slider_img1} style={{width:393,height:'100%'}}></Image>
-            <Image source={R.images.slider_img2} style={{width:393,height:'100%'}}></Image>
-            <Image source={R.images.slider_img3} style={{width:393,height:'100%'}}></Image>
-            <Image source={R.images.slider_img4} style={{width:393,height:'100%'}}></Image>
-          </ScrollView> */}
-          <IndicatorViewPager
-                     style={{height:260}}
-                    indicator={this.renderDotIndicator()}
-          >
-            <View>
-            <Image source={R.images.slider_img1} style={{width:'100%',height:'100%'}}></Image>
-            </View>
-            <View>
-            <Image source={R.images.slider_img2} style={{width:'100%',height:'100%'}}></Image>
-            </View>
-            <View>
-            <Image source={R.images.slider_img3} style={{width:'100%',height:'100%'}}></Image>
-            </View>
-            <View>
-            <Image source={R.images.slider_img4} style={{width:'100%',height:'100%'}}></Image>
-            </View>
-        </IndicatorViewPager>
+       
+          <ImageCarousel images={images}/>
+       
         </View>
         
         <View style={{flex:3,justifyContent:'center',alignItems:'center'}}>

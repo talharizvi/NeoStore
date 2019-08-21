@@ -4,7 +4,6 @@ import R from '../R';
 import CustomButtonRed from '../components/CustomButtonRed';
 import Api from '../components/Api';
 import InputSpinner from "react-native-input-spinner";
-import CartContextProvider from '../context/CartContextProvider';
 import CartContext from '../context/CartContext';
 
 export default class CartScreen extends Component{
@@ -29,14 +28,7 @@ export default class CartScreen extends Component{
         this.getCartItemsFromApi() 
     }
 
-    // getCartItemCount(count){
-    //     return(<MyContext.Consumer> 
-    //         {data=>
-    //             {data.state.count}    
-    //         } 
-
-    //     </MyContext.Consumer>)
-    // }
+    
 
     getCartItemsFromApi(){
        
@@ -90,7 +82,7 @@ export default class CartScreen extends Component{
 	    min={1}
 	    step={1}
 	    colorMax={"#f04048"}
-	    colorMin={"#40c5f4"}
+	    // colorMin={"#40c5f4"}
         value={itemQuantity}
         
 	    onChange={(num) => {

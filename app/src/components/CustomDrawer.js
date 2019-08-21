@@ -111,9 +111,7 @@ export default class CustomDrawer extends Component{
                            <Image source={item.image} style={{width:30,height:30,marginLeft:10}}/>
                            <Text style={{color:R.color.textInputBorderColor,fontSize:20,padding:10,marginLeft:10,fontFamily:R.fonts.GothamBlack}}>{item.title}</Text>
                             {this.displayCount(item.cartCount)}
-                           {/* <CartContext.Consumer>
-                               {contextValue=> <Text style={{color:R.color.textInputBorderColor,marginLeft:80,fontFamily:R.fonts.GothamBlack}}>{contextValue.state.count}</Text> }
-                           </CartContext.Consumer> */}
+                          
                      </View>
                      </TouchableOpacity>
                      }

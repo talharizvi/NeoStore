@@ -203,7 +203,7 @@ export default class DetailScreen extends Component {
                 
           </ScrollView>
           {/* for horizontal buttons    */}
-          <View style={{flexDirection:'row',justifyContent:'center',height:20,marginBottom:20}}>
+          <View style={{flexDirection:'row',justifyContent:'center',marginBottom:20}}>
               <View style={{flex:1,justifyContent:'center',marginLeft:10}}>
                   <TouchableOpacity style={{backgroundColor:R.color.backgroundColorDefault,justifyContent: 'center',borderRadius: 5,marginRight:10,alignItems:'center',paddingVertical:10}} onPress={()=>{
                      this.setModalItemVisible(true)

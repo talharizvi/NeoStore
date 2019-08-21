@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* NeoStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* NeoStoreTests.m */; };
 		0C8BC1F973BE4D9AAB8AB98A /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3C9DBABDBFB480AA21DF09C /* FontAwesome.ttf */; };
@@ -24,8 +25,10 @@
 		2DF3C5FE8E2941ABAF586111 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4E5AB8335474C3491AB00DF /* FontAwesome5_Brands.ttf */; };
 		506FDE41EE9D418CA5261881 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9116355B53475DB805A823 /* Ionicons.ttf */; };
 		5B6331C3CA6AFA6A9992D36D /* libPods-NeoStore-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A78A2E351E90C0E4D9405D1 /* libPods-NeoStore-tvOSTests.a */; };
+		646B88E7F625461F99C284A7 /* Gotham-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AE9855FD0B0E4BB39285A816 /* Gotham-Bold.otf */; };
 		7A75E65E0C3348ADA735639C /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1516DE3DACE54F1F99131F1B /* Feather.ttf */; };
 		8EB759461EF94D90A3332F5B /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D04FBB5A7B5499780216EF4 /* Fontisto.ttf */; };
+		919F42E25F704E889343478D /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 403C5534C72B43A5B4F9DABE /* Gotham-Black.otf */; };
 		93B5C3C449DC4972A521C39C /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C15F6B1033E492E97961EDC /* MaterialIcons.ttf */; };
 		94DFDDF1622046AA9E3F0EC6 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22830AEFD6764478BAE27B16 /* Zocial.ttf */; };
 		A86E29C664A8445486C790E6 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C26C5B7659F41B18F88B7BE /* MaterialCommunityIcons.ttf */; };
@@ -35,8 +38,6 @@
 		D5781D1EFBDE4342B43D07DF /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D59236C9E84E4B0FA5C57D3F /* AntDesign.ttf */; };
 		DA992B545CA2432AB5D556C4 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F99DDEE06F4E8EAD52BC8B /* SimpleLineIcons.ttf */; };
 		DE6B541DF6234180A475C68F /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 488579B2B68946B8BEEA2DB2 /* FontAwesome5_Regular.ttf */; };
-		919F42E25F704E889343478D /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 403C5534C72B43A5B4F9DABE /* Gotham-Black.otf */; };
-		646B88E7F625461F99C284A7 /* Gotham-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AE9855FD0B0E4BB39285A816 /* Gotham-Bold.otf */; };
 		E9F33FD79DDF41AA94AE741C /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92A239A398464433AF2BDAE3 /* Gotham-Light.otf */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		29E0C21D091F8D77497880D3 /* Pods-NeoStore-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoStore-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-NeoStore-tvOSTests/Pods-NeoStore-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* NeoStore-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NeoStore-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* NeoStore-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NeoStore-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		403C5534C72B43A5B4F9DABE /* Gotham-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gotham-Black.otf"; path = "../app/res/fonts/Gotham-Black.otf"; sourceTree = "<group>"; };
 		488579B2B68946B8BEEA2DB2 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		489EBF73DC1F0F6AF3727B92 /* libPods-NeoStore-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NeoStore-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E9116355B53475DB805A823 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
@@ -88,8 +90,10 @@
 		7BAAC2CA914048E48EAC09FC /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		8C15F6B1033E492E97961EDC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		918A85D107F4CD9E82CD87E0 /* Pods-NeoStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoStore.debug.xcconfig"; path = "Target Support Files/Pods-NeoStore/Pods-NeoStore.debug.xcconfig"; sourceTree = "<group>"; };
+		92A239A398464433AF2BDAE3 /* Gotham-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gotham-Light.otf"; path = "../app/res/fonts/Gotham-Light.otf"; sourceTree = "<group>"; };
 		A1849B8BAFF92FCCBCF3867B /* Pods-NeoStore-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoStore-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-NeoStore-tvOS/Pods-NeoStore-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		AD7C933C7A664441A1FF219A /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		AE9855FD0B0E4BB39285A816 /* Gotham-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Gotham-Bold.otf"; path = "../app/res/fonts/Gotham-Bold.otf"; sourceTree = "<group>"; };
 		C59A4982A44AD93452792ABA /* Pods-NeoStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoStoreTests.release.xcconfig"; path = "Target Support Files/Pods-NeoStoreTests/Pods-NeoStoreTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1765B8AC265A98DCF7BF290 /* libPods-NeoStore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NeoStore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C9DBABDBFB480AA21DF09C /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
@@ -101,9 +105,6 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F7C89F6F5C284117AF0DFC4A /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		403C5534C72B43A5B4F9DABE /* Gotham-Black.otf */ = {isa = PBXFileReference; name = "Gotham-Black.otf"; path = "../app/res/fonts/Gotham-Black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AE9855FD0B0E4BB39285A816 /* Gotham-Bold.otf */ = {isa = PBXFileReference; name = "Gotham-Bold.otf"; path = "../app/res/fonts/Gotham-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		92A239A398464433AF2BDAE3 /* Gotham-Light.otf */ = {isa = PBXFileReference; name = "Gotham-Light.otf"; path = "../app/res/fonts/Gotham-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -757,6 +758,7 @@
 			baseConfigurationReference = 918A85D107F4CD9E82CD87E0 /* Pods-NeoStore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = NeoStore/Info.plist;
@@ -768,6 +770,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = NeoStore;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -777,6 +780,7 @@
 			baseConfigurationReference = E67438956AC19333A72B969D /* Pods-NeoStore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = NeoStore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -787,6 +791,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = NeoStore;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -951,6 +956,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -996,6 +1002,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

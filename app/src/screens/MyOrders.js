@@ -51,11 +51,11 @@ export default class MyOrder extends Component{
       </TouchableOpacity>
       ))
     }else{
-      // return(
-      //   <View>
-      //     <Text>No Orders yet</Text>
-      //   </View>
-      // )
+      return(
+        <View>
+          <Text>No Orders yet</Text>
+        </View>
+      )
     }
     }
 

@@ -82,8 +82,9 @@ class ImageCarousel extends React.Component {
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    height: Dimensions.get("window").height/3,
+    height: Dimensions.get("window").height/3.5,
     width: Dimensions.get("window").width
+    
   },
   circleDiv: {
     position: "absolute",

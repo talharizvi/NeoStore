@@ -96,13 +96,13 @@ export default class CartScreen extends Component{
         );
       }
       
-      showAlertWithDelay=()=>{
+    //   showAlertWithDelay=()=>{
  
-        setTimeout(function(){
-          alert("Alert Shows After 5 Seconds of Delay.")
-        }, 6000);
+    //     setTimeout(function(){
+    //       alert("Alert Shows After 5 Seconds of Delay.")
+    //     }, 6000);
      
-      }
+    //   }
    
     
     render(){  
@@ -116,11 +116,13 @@ export default class CartScreen extends Component{
             )
         }
         return(<View style={{flex:1}}>
+            {/* style={{marginTop:1}} */}
             <FlatList 
             data={this.state.itemList}
             extraData={ {value : [this.state.pickValue0]} }
             renderItem={({item,index}) => 
-                    <View style={{flexDirection:'row',paddingBottom:5,borderBottomColor: R.color.blackColor,borderBottomWidth: 1,justifyContent:'space-between',alignItems:'center'}}>
+            // borderBottomColor: R.color.blackColor,borderBottomWidth: 1,borderTopColor:R.color.blackColor,borderTopWidth:1
+                    <View style={{flexDirection:'row',paddingBottom:5,borderColor:R.color.blackColor,borderWidth:1,justifyContent:'space-between',alignItems:'center'}}>
 
                         <View style={{padding:10}}>
                         <Image source={{uri:item.product.product_images}} style={{width:100,height:100}}></Image>  

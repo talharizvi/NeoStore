@@ -198,8 +198,8 @@ export default class DetailScreen extends Component {
               <ScrollView horizontal={true}>
                 {this.renderProductDetail()}
               </ScrollView>
-              <Text style={{fontSize:15,fontFamily:R.fonts.GothamBold}}>Description :</Text>
-              <Text style={{fontFamily:R.fonts.GothamBlack}}> {this.state.itemDetail.description}</Text>
+              <Text style={{fontSize:15,marginStart:10,fontFamily:R.fonts.GothamBold,fontSize:20}}>Description :</Text>
+              <Text style={{fontFamily:R.fonts.GothamBlack,marginStart:10,}}> {this.state.itemDetail.description}</Text>
                 
           </ScrollView>
           {/* for horizontal buttons    */}
@@ -238,14 +238,12 @@ function renderRating(count){
   } 
   
   return(
-      elements.map((item)=>{
-          // return(
-          <View >
-          {item}
-          </View>
-              // )
-      }) 
-      
-  )
+    elements.map((item,i)=>{
+        return(
+        <View key={item}  keyExtractor={(item,index)=>index.toString()}>
+        {item}
+        </View>)
+    }) 
+)
   
 }

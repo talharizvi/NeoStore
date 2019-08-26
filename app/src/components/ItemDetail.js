@@ -8,20 +8,22 @@ const ItemDetail=({itemImage,itemName,itemProducer,itemCost,itemRating})=>{
 
     return(   
 
-    <View  style={{flexDirection: 'row',margin:10}} >
-    <View>
+    <View  style={{flex:1,flexDirection: 'row',margin:10,alignSelf:'center',justifyContent:'center',backgroundColor:R.color.cardBackground,borderRadius:8,paddingVertical:10}} >
+    <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
         <Image source={{uri:itemImage}} style={{height:80,width:80}}></Image>
     </View>
 
-    <View>    
-        <View style={{marginLeft:10}}>
+    <View style={{flex:2,alignSelf:'center'}}>    
+        <View style={{flex: 2,marginLeft:10}}>
             <Text style={{fontFamily:R.fonts.GothamBlack}}>{itemName}</Text>
             <Text style={{fontFamily:R.fonts.GothamBlack}}>{itemProducer}</Text>
         </View>
 
-        <View style={{margin:10,flexDirection:'row'}}>
-            <Text style={{color:R.color.backgroundColorDefault,fontFamily:R.fonts.GothamBlack}}>Rs {itemCost}</Text>
-            <View style={{flexDirection:'row',marginLeft:150}}>{renderRating(itemRating)}</View>
+        <View style={{flex:2,margin:10,flexDirection:'row',justifyContent:'center' ,alignItems:'center'}}>
+            
+
+            <Text style={{flex:1,color:R.color.backgroundColorDefault,fontFamily:R.fonts.GothamBlack,}}>Rs {itemCost}</Text>
+            <View style={{flexDirection:'row',}}>{renderRating(itemRating)}</View>
         </View>
 
     </View>
@@ -43,9 +45,9 @@ const ItemDetail=({itemImage,itemName,itemProducer,itemCost,itemRating})=>{
         } 
 
         return(
-            elements.map((item)=>{
+            elements.map((item,i)=>{
                 return(
-                <View >
+                <View key={item}  keyExtractor={(item,index)=>index.toString()}>
                 {item}
                 </View>)
             }) 

@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-community/async-storage';
  const Api=async(endPoint,method,body)=>{
     const commonUrl = "http://staging.php-dev.in:8844/trainingapp/api/"
     let accessToken = await AsyncStorage.getItem('access_token')
-    //console.log(token)
+   
     console.log(accessToken)
     console.log(method)
     console.log(endPoint)
@@ -17,7 +17,7 @@ import AsyncStorage from '@react-native-community/async-storage';
      return fetch(url,{
         method:method,
         headers:{
-            // access_token:token,
+          
             access_token:accessToken,
             'Content-Type': 'application/x-www-form-urlencoded',
           },

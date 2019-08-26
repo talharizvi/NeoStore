@@ -5,26 +5,22 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 export default class CartContextProvider extends Component{
 
-    state={
-        count:0,
-        userName:'',
-        userEmail:''
-    }
-
-    componentDidMount(){
+    constructor(){
+        super()
+        this.state={
+            count:0,
+            userName:'',
+            userEmail:''
+        }
         this.displayData()
-        this.getCartItemsFromApi()
-          
-       
     }
 
     getCartItemsFromApi(){
-       
         return Api('cart','GET',null)
         .then((responseJson)=>{
             console.log(responseJson)
+            console.log("cartcontextProvider"+responseJson.count)
             this.setState({count:responseJson.count})
-          
         }).catch((error)=>{
             console.error(error)
         }) 
@@ -34,10 +30,12 @@ export default class CartContextProvider extends Component{
         try{
             const value= await AsyncStorage.getItem('user_name')
             const userEmail = await AsyncStorage.getItem('user_email')
+            console.log("displayData"+value+userEmail)
             this.setState({
               userName:value,
               userEmail:userEmail
             })
+            this.getCartItemsFromApi()
             
       
           }catch(error){
@@ -63,19 +61,22 @@ export default class CartContextProvider extends Component{
         this.setState({count:this.state.count+1})
     }
 
+
     decreaseCount=()=>{
         this.setState({count:this.state.count-1})
     }
     
 
     render(){
-        // this.displayData()
+       
         return(<CartContext.Provider value={
                 {
                     state: this.state,
                     plusCount:this.increaseCount,
                     minusCount:this.decreaseCount,
-                    updateData:this.updateData
+                    updateData:this.updateData,
+                    displayData:this.displayData
+                 
                 }
         }>
             {this.props.children}

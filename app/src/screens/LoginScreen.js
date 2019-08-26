@@ -7,6 +7,7 @@ import CustomTextInput from '../components/CustomTextInput';
 import CustomTextInputSecure from '../components/CustomTextInputSecure';
 import AsyncStorage from '@react-native-community/async-storage';
 import Api from '../components/Api';
+import CartContext from '../context/CartContext';
 
 export default class LoginScreen extends Component{
 
@@ -24,14 +25,8 @@ export default class LoginScreen extends Component{
       }
  
       
-    loginUser(userName,password){
-        // fetch('http://staging.php-dev.in:8844/trainingapp/api/users/login',{
-        //     method:'POST',
-        //     headers:{
-        //         'Content-Type': 'application/x-www-form-urlencoded',
-        //       },
-        //     body:`email=${userName}&password=${password}`  
-        // }).then((response)=>response.json())
+    loginUser(userName,password,cartContext){
+       
         return Api('users/login','POST',`email=${userName}&password=${password}`)
         .then((responseJson)=>{
             console.log(responseJson)
@@ -47,7 +42,10 @@ export default class LoginScreen extends Component{
                     console.log("username from login "+userName)
                     this.multiSet(userName,userEmail,accessToken)
                     this.props.navigation.navigate("HomeStack")
-                   
+                    
+                    cartContext.displayData()
+                     
+
                 }else if(status==401){
                     setTimeout(()=>{
                         this.setState({showIndicator: false})
@@ -82,9 +80,15 @@ export default class LoginScreen extends Component{
                     <Text style={[style.headerTitleStyle]}>{R.strings.AppName}</Text>
                     <CustomTextInput sourceImage={R.images.username_icon} placeholdeValue='UserName' onChangeText={(userName)=>{this.setState({userName})}}/>
                     <CustomTextInputSecure sourceImage={R.images.password_icon} placeholdeValue='Password' onChangeText={(password)=>{this.setState({password})}}/>
-                    <CustomButton title='LOGIN' onPress={()=>{               
+                    
+                    <CartContext.Consumer>
+                        {cc=><CustomButton title='LOGIN' onPress={()=>{               
+                        this.loginUser(this.state.userName,this.state.password,cc)
+                    }}/>}
+                    </CartContext.Consumer>
+                    {/* <CustomButton title='LOGIN' onPress={()=>{               
                         this.loginUser(this.state.userName,this.state.password)
-                    }}/>
+                    }}/> */}
                     <Text style={{marginTop:10,color:R.color.textInputBorderColor,fontSize:20,fontFamily:R.fonts.GothamBlack}} onPress={()=>{this.props.navigation.navigate('ForgotPassWord')}}>Forgot Password?</Text>
         {this.state.showIndicator && (<ActivityIndicator size='large' color={R.color.textInputBorderColor}/>)}
                     <View style={{flexDirection:'row',alignItems:'center',justifyContent:'flex-end',marginTop:140}}>

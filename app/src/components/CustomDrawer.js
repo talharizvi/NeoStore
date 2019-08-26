@@ -16,17 +16,19 @@ export default class CustomDrawer extends Component{
 
    componentDidMount(){
     this.getCartCount()
+    this.displayData()
    }
 
       displayData=async()=>{
       try{
           const value= await AsyncStorage.getItem('user_name')
           const userEmail = await AsyncStorage.getItem('user_email')
+          console.log("asyncValue"+value+userEmail)
           this.setState({
             userName:value,
             userEmail:userEmail
           })
-        
+        console.log(this.state.userName+this.state.userEmail)
     
         }catch(error){
           console.log(error)
@@ -58,6 +60,7 @@ export default class CustomDrawer extends Component{
   }
 
   displayCount(count){
+     
     if(count==1){
         return( <CartContext.Consumer>
             {contextValue=> <Text style={{color:R.color.textInputBorderColor,marginLeft:80,fontFamily:R.fonts.GothamBlack}}>{contextValue.state.count}</Text> }
@@ -69,7 +72,8 @@ export default class CustomDrawer extends Component{
    
 
     render(){
-        this.displayData()
+      //  this.displayData()
+      console.log("render called")
         return(
             <SafeAreaView style={{flex:1,backgroundColor:R.color.drawerBackground}}>
                 <View style={{alignItems:'center', paddingTop:30,}}>
@@ -102,7 +106,10 @@ export default class CustomDrawer extends Component{
                 <TouchableOpacity onPress={()=>{this.props.navigation.navigate(item.screen,{productCategoryId:item.itemId,itemCategory:item.itemType})
                     if(item.title=="Logout"){
                         
-                         {this.clearTokenData()}   
+                         {this.clearTokenData()}
+                        //  {<CartContext.Consumer>
+                        //      {contextValue=>{contextValue.state.setCountToZero}}
+                        //  </CartContext.Consumer>}   
                     }
         
                 }}>

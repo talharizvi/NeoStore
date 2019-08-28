@@ -10,7 +10,8 @@ export default class CartContextProvider extends Component{
         this.state={
             count:0,
             userName:'',
-            userEmail:''
+            userEmail:'',
+            profilePic:'https://facebook.github.io/react-native/img/tiny_logo.png'
         }
         this.displayData()
     }
@@ -49,11 +50,13 @@ export default class CartContextProvider extends Component{
             console.log('updatedata')
             console.log(responseJson)
             const fullName = responseJson.data.user_data.first_name+responseJson.data.user_data.last_name
-            this.setState({userName:fullName,userEmail:responseJson.data.user_data.email})
+            this.setState({userName:fullName,userEmail:responseJson.data.user_data.email,profilePic:responseJson.data.user_data.profile_pic})
             console.log(this.state)
         })
         
         }
+
+        
      
     
 

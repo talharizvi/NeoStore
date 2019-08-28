@@ -43,7 +43,8 @@ const images={
     slider_img2: require("./images/slider_img2.jpg"),
     slider_img3: require("./images/slider_img3.jpg"),
     slider_img4: require("./images/slider_img4.jpg"),
-    header_shopping_cart:require("./images/header_shopping_cart.png")
+    header_shopping_cart:require("./images/header_shopping_cart.png"),
+    app_icon:require("./images/app_icon.png")
 }
 
 export default images

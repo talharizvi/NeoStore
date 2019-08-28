@@ -13,7 +13,8 @@ export default class MyAccount extends Component{
   state={
     firstName:'FirstName',
     dataSource:'',
-    accessToken:''
+    accessToken:'',
+    profilePic:'',
   }
 
   componentDidMount(){
@@ -24,8 +25,31 @@ export default class MyAccount extends Component{
     const endPoint='users/getUserData';
     return Api(endPoint,'GET',null).then((responseJson)=>{
       console.log(responseJson)
+      if(responseJson.data.user_data.profile_pic==""){
+       // this.setState({profile_pic:R.images.app_icon})
+      }else{
+        this.setState({profilePic:responseJson.data.user_data.profile_pic})
+      }
       this.setState({dataSource:responseJson.data.user_data})
     })
+  }
+
+  displayImage(){
+    console.log(this.state.profilePic)
+    if(this.state.profilePic==''){
+      return(
+        <View style={{alignItems:'center', paddingTop:30}}>
+        <Image source={R.images.app_icon} style={style.roundImageStyle}></Image>
+      </View>)
+    }else{
+    
+      return(
+        <View style={{alignItems:'center', paddingTop:30}}>
+          <Image source={{uri:this.state.profilePic}} style={style.roundImageStyle}></Image>
+        </View>
+      )
+    }
+    
   }
 
 
@@ -34,9 +58,10 @@ export default class MyAccount extends Component{
         return(
         <ScrollView style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}>  
         <View style={{flex:1,alignItems: "center"}}>
-          <View style={{alignItems:'center', paddingTop:30}}>
-            <Image source={{uri:'https://facebook.github.io/react-native/docs/assets/favicon.png'}} style={style.roundImageStyle}></Image>
-          </View>
+          {/* <View style={{alignItems:'center', paddingTop:30}}>
+            <Image source={this.state.profilePic} style={style.roundImageStyle}></Image>
+          </View> */}
+          {this.displayImage()}
           <CustomText sourceImage={R.images.username_icon} textTitle={this.state.dataSource.first_name} />
           <CustomText sourceImage={R.images.username_icon} textTitle={this.state.dataSource.last_name}  />
           <CustomText sourceImage={R.images.email_icon} textTitle={this.state.dataSource.email} />

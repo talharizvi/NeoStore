@@ -14,6 +14,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
     const url = commonUrl+endPoint
     console.log(url)
+    console.log("body="+body)
      return fetch(url,{
         method:method,
         headers:{
@@ -22,7 +23,10 @@ import AsyncStorage from '@react-native-community/async-storage';
             'Content-Type': 'application/x-www-form-urlencoded',
           },
           body:body
-    }).then((response)=>response.json())
+    })
+    .then((response)=>response.json()
+      )
+    
     
 }
 

@@ -72,15 +72,16 @@ export default class CustomDrawer extends Component{
    
 
     render(){
-      //  this.displayData()
-      console.log("render called")
+     
         return(
             <SafeAreaView style={{flex:1,backgroundColor:R.color.drawerBackground}}>
                 <View style={{alignItems:'center', paddingTop:30,}}>
-                    <Image source={{uri:'https://facebook.github.io/react-native/docs/assets/favicon.png'}} style={style.roundImageStyle}></Image>
+                    {/* <Image source={R.images.app_icon} style={style.roundImageStyle}></Image> */}
                     
                     <CartContext.Consumer>
-                               {contextValue=> <View style={{justifyContent:'center',alignItems:'center'}}><Text style={{color:R.color.textInputBorderColor,fontSize:20,fontFamily:R.fonts.GothamBlack}}>{contextValue.state.userName}</Text>
+                               {contextValue=> <View style={{justifyContent:'center',alignItems:'center'}}>
+                               <Image source={{uri:contextValue.state.profilePic}} style={style.roundImageStyle}></Image>
+                                   <Text style={{color:R.color.textInputBorderColor,fontSize:20,fontFamily:R.fonts.GothamBlack}}>{contextValue.state.userName}</Text>
                                                <Text style={{color:R.color.textInputBorderColor,fontSize:20,fontFamily:R.fonts.GothamBlack}}>{contextValue.state.userEmail}</Text> 
                                                </View>
                                }

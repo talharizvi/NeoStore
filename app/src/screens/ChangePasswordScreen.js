@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text,Image,StatusBar} from 'react-native';
+import {View,Text,Image,StatusBar,ScrollView} from 'react-native';
 import CustomTextInput from '../components/CustomTextInput';
 import R from '../R';
 import CustomButton from '../components/CustomButton';

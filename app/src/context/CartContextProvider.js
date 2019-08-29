@@ -20,8 +20,11 @@ export default class CartContextProvider extends Component{
         return Api('cart','GET',null)
         .then((responseJson)=>{
             console.log(responseJson)
-            console.log("cartcontextProvider"+responseJson.count)
-            this.setState({count:responseJson.count})
+            if(responseJson.data!=null){
+                console.log("cartcontextProvider"+responseJson.data.count)
+                this.setState({count:responseJson.count})
+            }
+            
         }).catch((error)=>{
             console.error(error)
         }) 
@@ -55,10 +58,6 @@ export default class CartContextProvider extends Component{
         })
         
         }
-
-        
-     
-    
 
     increaseCount=()=>{
         this.setState({count:this.state.count+1})

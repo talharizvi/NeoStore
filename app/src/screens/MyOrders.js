@@ -52,7 +52,7 @@ export default class MyOrder extends Component{
       ))
     }else{
       return(
-        <View>
+        <View style={{justifyContent:'center',alignItems:'center'}}>
           <Text>No Orders yet</Text>
         </View>
       )

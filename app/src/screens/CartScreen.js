@@ -18,6 +18,7 @@ export default class CartScreen extends Component{
             pickValue0: 1,
             totalAmount:'',
             accessToken:'',
+            showIndicator:true,
         }
         
     }
@@ -96,13 +97,24 @@ export default class CartScreen extends Component{
         );
       }
       
-    //   showAlertWithDelay=()=>{
+      showAlertWithDelay=()=>{
  
-    //     setTimeout(function(){
-    //       alert("Alert Shows After 5 Seconds of Delay.")
-    //     }, 6000);
-     
-    //   }
+        setTimeout(()=>{
+          this.setState({showIndicator:false}) 
+          
+        }, 3000);
+        
+      }
+
+
+    displayEmptyCartText(){
+        if(this.state.showIndicator==false){
+            return(<View>
+                <Text>Empty Cart</Text>
+            </View>)
+        }
+        
+      }
    
     
     render(){  
@@ -110,18 +122,19 @@ export default class CartScreen extends Component{
             if(this.state.itemList==null){
             return(
             <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
-            <ActivityIndicator size='large' color={R.color.backgroundColorDefault}/>
-            {/* {this.showAlertWithDelay()} */}
+            {this.showAlertWithDelay()}
+            {this.state.showIndicator && (<ActivityIndicator size='large' color={R.color.backgroundColorDefault}/>)}
+            {this.displayEmptyCartText()}    
             </View>
             )
         }
         return(<View style={{flex:1}}>
-            {/* style={{marginTop:1}} */}
+           
             <FlatList 
             data={this.state.itemList}
             extraData={ {value : [this.state.pickValue0]} }
             renderItem={({item,index}) => 
-            // borderBottomColor: R.color.blackColor,borderBottomWidth: 1,borderTopColor:R.color.blackColor,borderTopWidth:1
+            
                     <View style={{flexDirection:'row',paddingBottom:5,borderColor:R.color.blackColor,borderWidth:1,justifyContent:'space-between',alignItems:'center'}}>
 
                         <View style={{padding:10}}>

@@ -11,11 +11,10 @@ export default class CustomDrawer extends Component{
    state={
        userName:'Default',
        userEmail:"default@gmail.com",
-       cartItemQuantity:0
+      
    }
 
    componentDidMount(){
-    this.getCartCount()
     this.displayData()
    }
 
@@ -35,16 +34,7 @@ export default class CustomDrawer extends Component{
         }
     }
 
-    getCartCount(){
-        return Api('cart','GET',null)
-        .then((responseJson)=>{
-            console.log(responseJson)
-            this.setState({cartItemQuantity:responseJson.data.length})
-            
-        }).catch((error)=>{
-            console.log(error)
-        })
-    }
+   
 
     
   clearTokenData=async()=>{
@@ -76,7 +66,6 @@ export default class CustomDrawer extends Component{
         return(
             <SafeAreaView style={{flex:1,backgroundColor:R.color.drawerBackground}}>
                 <View style={{alignItems:'center', paddingTop:30,}}>
-                    {/* <Image source={R.images.app_icon} style={style.roundImageStyle}></Image> */}
                     
                     <CartContext.Consumer>
                                {contextValue=> <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -106,20 +95,14 @@ export default class CustomDrawer extends Component{
                 
                 <TouchableOpacity onPress={()=>{this.props.navigation.navigate(item.screen,{productCategoryId:item.itemId,itemCategory:item.itemType})
                     if(item.title=="Logout"){
-                        
                          {this.clearTokenData()}
-                        //  {<CartContext.Consumer>
-                        //      {contextValue=>{contextValue.state.setCountToZero}}
-                        //  </CartContext.Consumer>}   
                     }
         
                 }}>
                     <View style={{flexDirection:"row",alignItems:'center'}}>
-                        
                            <Image source={item.image} style={{width:30,height:30,marginLeft:10}}/>
                            <Text style={{color:R.color.textInputBorderColor,fontSize:20,padding:10,marginLeft:10,fontFamily:R.fonts.GothamBlack}}>{item.title}</Text>
                             {this.displayCount(item.cartCount)}
-                          
                      </View>
                      </TouchableOpacity>
                      }

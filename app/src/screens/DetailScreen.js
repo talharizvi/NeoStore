@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,Image,TouchableOpacity,ScrollView,Button,Modal ,TextInput} from 'react-native';
+import { View, Text,Image,TouchableOpacity,ScrollView,Button,Modal ,TextInput,} from 'react-native';
 import R from '../R';
 import StarRating from '../components/StarRating';
 import style from '../Styles';
@@ -103,7 +103,8 @@ export default class DetailScreen extends Component {
                   style={{flex:1}} 
                   activeOpacity={1} 
                   onPressOut={() => {this.setModalItemVisible(false)}}
-                > 
+                >
+                   
               
                   <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
                     <View style={{backgroundColor: '#fff', padding: 20,borderRadius:4}}>

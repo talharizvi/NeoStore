@@ -30,7 +30,6 @@ export default class LoginScreen extends Component{
         return Api('users/login','POST',`email=${userName}&password=${password}`)
         .then((responseJson)=>{
             console.log(responseJson)
-           
             let status = responseJson.status
             this.setState({showIndicator: !this.state.showIndicator})
                 if(status==200){
@@ -42,10 +41,8 @@ export default class LoginScreen extends Component{
                     console.log("username from login "+userName)
                     this.multiSet(userName,userEmail,accessToken)
                     this.props.navigation.navigate("HomeStack")
-                    
                     cartContext.displayData()
-                     
-
+                    
                 }else if(status==401){
                     setTimeout(()=>{
                         this.setState({showIndicator: false})

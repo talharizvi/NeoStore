@@ -1,5 +1,5 @@
 import React,{Component}  from 'react';
-import {View,Text} from 'react-native';
+import {View,Text,SafeAreaView} from 'react-native';
 import R from '../R';
 import { TextInput } from 'react-native-gesture-handler';
 import CustomButtonRed from '../components/CustomButtonRed';
@@ -41,7 +41,7 @@ export default class AddressScreen extends Component{
       
        
         return(
-            <View>
+            <SafeAreaView>
                 <Text style={{fontFamily:R.fonts.GothamBlack}}> Address</Text>
                 <TextInput placeholder={"Neosoft Technologies 4th floor,\nThe Ruby,29,Senapati Bapat Marg,\nDadar (West) Mumbai-400028.INDIA"} onChangeText={(address)=>{this.setState({address})
 
@@ -81,7 +81,7 @@ export default class AddressScreen extends Component{
                     this.props.navigation.navigate("AddressList")
                     }}/>
 
-            </View>
+            </SafeAreaView>
         )
         
     }

@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text,Image,ScrollView,Button} from 'react-native';
+import {View,Text,Image,ScrollView,Button,SafeAreaView} from 'react-native';
 import CustomTextInput from '../components/CustomTextInput';
 import R from '../R';
 import CustomButton from '../components/CustomButton';
@@ -89,7 +89,8 @@ export default class EditProfile extends Component{
 
     render(){
         return(
-       <ScrollView style={{flex:1,backgroundColor:R.color.backgroundColorDefault,}}> 
+       <SafeAreaView style={{flex:1,backgroundColor:R.color.backgroundColorDefault,}}>   
+       <ScrollView > 
         <View style={{flex:1,alignItems: "center"}}>
         <CartContext.Consumer>{
           cv=> <TouchableOpacity onPress={()=>{
@@ -152,6 +153,7 @@ export default class EditProfile extends Component{
             
        </View>
        </ScrollView>
+       </SafeAreaView>
        )
     }
 }

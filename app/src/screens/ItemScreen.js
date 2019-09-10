@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,ScrollView,TouchableOpacity,ActivityIndicator } from 'react-native';
+import { View, Text,ScrollView,TouchableOpacity,ActivityIndicator,SafeAreaView } from 'react-native';
 import ItemDetail from '../components/ItemDetail';
 import R from '../R';
 import Api from '../components/Api';
@@ -70,14 +70,14 @@ export default class ItemScreen extends Component {
     }
 
     return(
-    
+      <SafeAreaView>
       <ScrollView 
       >
 
         {this.renderItems()}
         
       </ScrollView>
-     
+      </SafeAreaView>
     )
     }
   

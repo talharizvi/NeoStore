@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,ScrollView } from 'react-native';
+import { View, Text,ScrollView,SafeAreaView } from 'react-native';
 import R from '../R';
 import CustomTextInput from '../components/CustomTextInput';
 import CustonButton from '../components/CustomButton';
@@ -35,7 +35,8 @@ export default class ForgotPasswordScreen extends Component {
 
   render() {
     return (
-      <ScrollView style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}>
+      <SafeAreaView style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}>
+      <ScrollView >
         <View style={{flex:1,alignItems: "center",}}>
         <CustomTextInput sourceImage={R.images.email_icon} placeholdeValue='Email' onChangeText={(email)=>{this.setState({email})}}></CustomTextInput>
         <CustonButton title='OK' onPress={()=>{
@@ -43,6 +44,7 @@ export default class ForgotPasswordScreen extends Component {
         }}/>
         </View>
       </ScrollView>
+      </SafeAreaView>
     );
   }
 }

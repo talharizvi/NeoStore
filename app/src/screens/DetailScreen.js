@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,Image,TouchableOpacity,ScrollView,Button,Modal ,TextInput,} from 'react-native';
+import { View, Text,Image,TouchableOpacity,ScrollView,Button,Modal ,TextInput,SafeAreaView} from 'react-native';
 import R from '../R';
 import StarRating from '../components/StarRating';
 import style from '../Styles';
@@ -88,7 +88,7 @@ export default class DetailScreen extends Component {
 
        const productId = this.props.navigation.getParam('productId',1)
         return(
-        <View style={{flex:1}}>
+        <SafeAreaView style={{flex:1}}>
           <ScrollView style={{flex:1}}>    
              <Modal
               animationType="fade"
@@ -221,7 +221,7 @@ export default class DetailScreen extends Component {
              </View>
           </View>
                
-        </View>) 
+        </SafeAreaView>) 
     
   }
 

@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text} from 'react-native';
+import {View,Text,SafeAreaView} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import R from '../R';
 import CustomButtonRed from '../components/CustomButtonRed';
@@ -60,7 +60,7 @@ export default class AddressList extends Component{
       
         return(
             
-            <View>
+            <SafeAreaView>
                 
                 <View style={{margin:5,borderColor:R.color.blackColor,borderWidth:2,}}>
                     <Text style={{fontFamily:R.fonts.GothamBlack}}>{this.state.addressObj.address}</Text>
@@ -75,7 +75,7 @@ export default class AddressList extends Component{
                     this.placeOrder(this.state.addressName)
                     }}>
                 </CustomButtonRed>
-          </View>
+          </SafeAreaView>
     )}    
 }
 

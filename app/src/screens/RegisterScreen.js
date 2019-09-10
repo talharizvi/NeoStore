@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image,TouchableOpacity,ScrollView} from 'react-native';
+import { View, Text, Image,TouchableOpacity,ScrollView,SafeAreaView} from 'react-native';
 import R from '../R';
 import CustomTextInput from '../components/CustomTextInput';
 import CustonButton from '../components/CustomButton';
@@ -50,7 +50,8 @@ export default class RegisterScreen extends Component {
     var imageSourceFemale = this.state.isSelected? R.images.chkn:R.images.chky ;
     var imageSourceCheckBox = this.state.isChecked?R.images.checked_icon:R.images.uncheck_icon; 
     return (
-      <ScrollView style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}>
+      <SafeAreaView  style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}>
+      <ScrollView>
       <View style={{flex:1,alignItems: "center",}}>
      
         <CustomTextInput sourceImage={R.images.username_icon} placeholdeValue='First Name' onChangeText={(firstName)=>this.setState({firstName})}></CustomTextInput>
@@ -107,6 +108,7 @@ export default class RegisterScreen extends Component {
 
       </View>
       </ScrollView>
+      </SafeAreaView>
     );
   }
 }

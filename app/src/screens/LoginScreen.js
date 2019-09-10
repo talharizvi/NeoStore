@@ -1,5 +1,5 @@
 import React,{Component,useState} from 'react';
-import {View,Button,Image,TextInput,Text,ActivityIndicator,ScrollView} from 'react-native';
+import {View,Button,Image,TextInput,Text,ActivityIndicator,ScrollView,SafeAreaView} from 'react-native';
 import R from '../R';
 import style from '../Styles';
 import CustomButton from '../components/CustomButton';
@@ -72,7 +72,8 @@ export default class LoginScreen extends Component{
    
     render(){
         return(
-            <ScrollView style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}>
+            <SafeAreaView style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}>
+            <ScrollView >
                 <View style={ {flex: 1,alignItems: "center", }}>
                     <Text style={[style.headerTitleStyle]}>{R.strings.AppName}</Text>
                     <CustomTextInput sourceImage={R.images.username_icon} placeholdeValue='UserName' onChangeText={(userName)=>{this.setState({userName})}}/>
@@ -96,6 +97,7 @@ export default class LoginScreen extends Component{
         
                 </View>
         </ScrollView>
+        </SafeAreaView>
         )
     }
 }

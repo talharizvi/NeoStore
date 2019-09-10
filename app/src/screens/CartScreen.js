@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View,Text,Image,FlatList,Button,Picker,TouchableOpacity,ActivityIndicator} from 'react-native';
+import {View,Text,Image,FlatList,Button,Picker,TouchableOpacity,ActivityIndicator,SafeAreaView} from 'react-native';
 import R from '../R';
 import CustomButtonRed from '../components/CustomButtonRed';
 import Api from '../components/Api';
@@ -128,7 +128,7 @@ export default class CartScreen extends Component{
             </View>
             )
         }
-        return(<View style={{flex:1}}>
+        return(<SafeAreaView style={{flex:1}}>
            
             <FlatList 
             data={this.state.itemList}
@@ -177,7 +177,7 @@ export default class CartScreen extends Component{
 
            
 
-        </View>)
+        </SafeAreaView>)
         
     }
 }

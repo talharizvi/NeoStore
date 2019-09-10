@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text,Image} from 'react-native';
+import {View,Text,Image,SafeAreaView} from 'react-native';
 import R from '../R';
 import Api from '../components/Api';
 
@@ -70,8 +70,12 @@ export default class OrderDetail extends Component{
     }
     
     render(){
-        return(<View>
+        return(
+        <SafeAreaView>
+        <View>
             {this.renderItems()}
-        </View>)
+        </View>
+        </SafeAreaView>
+        )
     }
 }

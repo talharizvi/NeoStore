@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text,Image,TouchableOpacity,StatusBar,YellowBox,Dimensions} from 'react-native';
+import { View, Text,Image,TouchableOpacity,StatusBar,YellowBox,Dimensions,SafeAreaView} from 'react-native';
 import R from '../R';
 import HamburgerIcon from '../components/HamburgerIcon';
 import ShoppingCartButton from '../components/ShoppingCartButton';
@@ -32,7 +32,7 @@ export default function HomeScreen(props){
   YellowBox.ignoreWarnings(['Warning: componentWillUpdate']);
   console.disableYellowBox = true;
   return(
-          <View style={{flex:1}}>
+          <SafeAreaView style={{flex:1}}>
             <StatusBar backgroundColor={R.color.backgroundColorDefault}></StatusBar>
             <View style={{flex:1}}>
        
@@ -87,6 +87,6 @@ export default function HomeScreen(props){
 
        </View>
 
-      </View>
+      </SafeAreaView>
   )
 }

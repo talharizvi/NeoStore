@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text,Image,StatusBar,ScrollView} from 'react-native';
+import {View,Text,Image,StatusBar,ScrollView,SafeAreaView} from 'react-native';
 import CustomTextInput from '../components/CustomTextInput';
 import R from '../R';
 import CustomButton from '../components/CustomButton';
@@ -43,7 +43,8 @@ export default class ChangePasswordScreen extends Component{
     
     render(){
         return(
-            <ScrollView style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}> 
+            <SafeAreaView style={{flex:1,backgroundColor:R.color.backgroundColorDefault}}>
+            <ScrollView > 
         <View style={{flex:1}}>    
             <StatusBar backgroundColor={R.color.backgroundColorDefault}></StatusBar>
             <CustomTextInput sourceImage={R.images.password_icon} placeholdeValue='Old Password' onChangeText={(oldPassword)=>{this.setState({oldPassword})}}/>
@@ -55,6 +56,7 @@ export default class ChangePasswordScreen extends Component{
            
         </View>
         </ScrollView>
+        </SafeAreaView>
         )
     }
 } 

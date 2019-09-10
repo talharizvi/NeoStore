@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Image,TextInput,Text,TouchableOpacity} from 'react-native';
+import {View,Image,TextInput,Text,TouchableOpacity,SafeAreaView} from 'react-native';
 import R from '../R';
 import AsyncStorage from '@react-native-community/async-storage';
 import Api from '../components/Api';
@@ -60,9 +60,13 @@ export default class MyOrder extends Component{
     }
 
     render(){
-        return(<View>
+        return(
+        <SafeAreaView>
+        <View>
           {this.renderOrderList()}
             
-        </View>)
+        </View>
+       </SafeAreaView>
+        )
     }
 }

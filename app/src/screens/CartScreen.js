@@ -174,9 +174,6 @@ export default class CartScreen extends Component{
             <CustomButtonRed title="Order Now" onPress={()=>{
                 this.props.navigation.navigate('Address')
             }}/>
-
-           
-
         </SafeAreaView>)
         
     }

@@ -85,7 +85,7 @@ export default class CustomDrawer extends Component{
                             {image:R.images.sofa_icon,title:"Sofas",screen:"Item",itemId:3,itemType:'Sofas',cartCount:0},
                             {image:R.images.chair_icon,title:"Chairs",screen:"Item",itemId:2,itemType:'Chairs',cartCount:0},
                             {image:R.images.cupboard_icon,title:"Cupboard",screen:"Item",itemId:4,itemType:'Cupboard',cartCount:0},
-                            {image:R.images.username_icon,title:"My Account",screen:"MyAccount",cartCount:0},
+                            {image:R.images.username_icon2,title:"My Account",screen:"MyAccount",cartCount:0},
                             {image:R.images.storelocator_icon,title:"Store Locator",screen:"StoreLocator",cartCount:0},
                             {image:R.images.myorders_icon,title:"My Orders",screen:"MyOrder",cartCount:0},
                             {image:R.images.logout_icon,title:"Logout",screen:'',cartCount:0}
